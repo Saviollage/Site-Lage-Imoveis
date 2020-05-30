@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:site_lage/components/colors.dart';
-import 'package:site_lage/util/foorter/footer_desktop.dart';
-
 import 'footerInfo.dart';
 import 'footerLogo.dart';
 

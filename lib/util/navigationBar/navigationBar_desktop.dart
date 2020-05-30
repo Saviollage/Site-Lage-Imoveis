@@ -10,18 +10,30 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          NavigationBarLogo(),
+          NavigationBarLogo(
+            onPressed: () => print("Home"),
+          ),
           Row(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             children: [
               NavigationBarItem(
                 title: "Sobre nós",
+                onPressed: () => print('Sobre nós'),
               ),
               SizedBox(
-                width: 60,
+                width: 30,
               ),
               NavigationBarItem(
                 title: "Contato",
+                onPressed: () => print('Contato'),
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              NavigationBarItem(
+                styled: true,
+                title: "Entrar",
+                onPressed: () => print("Entrar"),
               )
             ],
           )
