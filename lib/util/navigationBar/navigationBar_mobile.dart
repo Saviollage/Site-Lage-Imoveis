@@ -18,6 +18,7 @@ class NavigationBarMobile extends StatelessWidget {
           NavigationBarLogo(onPressed: () => pageController.changePage(0)),
           DropdownButton(
               icon: Icon(Icons.menu),
+              underline: SizedBox(),
               items: [
                 new DropdownMenuItem<int>(
                   value: 0,

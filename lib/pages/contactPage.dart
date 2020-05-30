@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:site_lage/controllers/page_controller.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:site_lage/pages/contactPage/contactPage_desktop.dart';
+import 'package:site_lage/pages/contactPage/contactPage_mobile.dart';
 
 class ContactPage extends StatelessWidget {
-  final pageController = GetIt.I.get<CurrentPageController>();
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
-      color: Colors.blue,
-    );
+        alignment: Alignment.topCenter,
+        child: ScreenTypeLayout(
+          desktop: ContactPageDesktop(),
+          tablet: ContactPageDesktop(),
+          mobile: ContactPageMobile(),
+        ));
   }
 }

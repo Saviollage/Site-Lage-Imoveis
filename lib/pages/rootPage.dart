@@ -22,6 +22,7 @@ class RootPage extends StatelessWidget {
         child: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
           child: Column(
+            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NavigationBar(),

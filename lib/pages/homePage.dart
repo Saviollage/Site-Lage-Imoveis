@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:site_lage/controllers/page_controller.dart';
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:site_lage/pages/homePage/homePage_desktop.dart';
+import 'package:site_lage/pages/homePage/homePage_mobile.dart';
 
 class HomePage extends StatelessWidget {
-  final pageController = GetIt.I.get<CurrentPageController>();
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
-      color: Colors.red,
-    );
+        alignment: Alignment.topCenter,
+        child: ScreenTypeLayout(
+          desktop: HomePageDesktop(),
+          tablet: HomePageDesktop(),
+          mobile: HomePageMobile(),
+        ));
   }
 }
