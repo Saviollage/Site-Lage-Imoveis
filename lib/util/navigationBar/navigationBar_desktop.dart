@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/util/navigationBar/navigationBarItem.dart';
 import 'package:site_lage/util/navigationBar/navigationBarLogo.dart';
 
 class NavigationBarDesktopAndTablet extends StatelessWidget {
+  
+  final pageController = GetIt.I.get<CurrentPageController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,21 +15,21 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           NavigationBarLogo(
-            onPressed: () => print("Home"),
+            onPressed: () => pageController.changePage(0)
           ),
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
               NavigationBarItem(
                 title: "Sobre nós",
-                onPressed: () => print('Sobre nós'),
+                onPressed: () => pageController.changePage(1),
               ),
               SizedBox(
                 width: 30,
               ),
               NavigationBarItem(
                 title: "Contato",
-                onPressed: () => print('Contato'),
+                onPressed: () => pageController.changePage(2),
               ),
               SizedBox(
                 width: 30,
@@ -33,7 +37,7 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
               NavigationBarItem(
                 styled: true,
                 title: "Entrar",
-                onPressed: () => print("Entrar"),
+                onPressed: () => pageController.changePage(3),
               )
             ],
           )
