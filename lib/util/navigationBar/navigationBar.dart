@@ -8,7 +8,6 @@ class NavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
         alignment: Alignment.topCenter,
         child: ScreenTypeLayout(
           desktop: NavigationBarDesktopAndTablet(),
