@@ -36,8 +36,8 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
                 width: 30,
               ),
               NavigationBarItem(
-                styled: true,
-                title: "Entrar",
+                styled: false,
+                title: "Simuladores",
                 onPressed: () => pageController.changePage(3),
               )
             ],
