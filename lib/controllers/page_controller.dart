@@ -1,7 +1,8 @@
 import 'package:mobx/mobx.dart';
 part 'page_controller.g.dart';
 
-class CurrentPageController = _CurrentPageControllerBase with _$CurrentPageController;
+class CurrentPageController = _CurrentPageControllerBase
+    with _$CurrentPageController;
 
 abstract class _CurrentPageControllerBase with Store {
   @observable
