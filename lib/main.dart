@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:site_lage/controllers/api_controller.dart';
 import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/controllers/search_controller.dart';
 import 'package:site_lage/pages/rootPage.dart';
@@ -10,6 +11,7 @@ void main() {
   GetIt getIt = GetIt.I;
   getIt.registerSingleton(CurrentPageController());
   getIt.registerSingleton(SearchController());
+   getIt.registerSingleton(ApiController());
 }
 
 class MyApp extends StatelessWidget {

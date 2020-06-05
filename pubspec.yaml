@@ -30,6 +30,7 @@ dependencies:
   universal_html:
   http:
   responsive_builder:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:

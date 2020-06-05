@@ -1,16 +1,25 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
+import 'package:site_lage/controllers/api_controller.dart';
 import 'package:site_lage/widgets/homePage/propertiesList.dart';
 import 'package:site_lage/widgets/homePage/searchWidget.dart';
 
 class HomePageDesktop extends StatelessWidget {
+  final apiController = GetIt.I.get<ApiController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SearchWidget(),
+          SearchWidget(
+            number: Random().nextInt(5) + 1,
+          ),
           SizedBox(
             height: 50,
           ),
@@ -31,8 +40,10 @@ class HomePageDesktop extends StatelessWidget {
                   style: TextStyle(color: LageColors.yellow),
                 )),
           ),
-          PropertiesList(
-            type: 'Destaque',
+          Observer(
+            builder: (context) => PropertiesList(
+              properties: apiController.properties.toList(),
+            ),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 25),
@@ -59,8 +70,11 @@ class HomePageDesktop extends StatelessWidget {
                   style: TextStyle(color: LageColors.yellow),
                 )),
           ),
-          PropertiesList(
-            type: 'Casas',
+          Observer(
+            builder: (context) => PropertiesList(
+              properties: apiController.properties.toList(),
+              type: "Casa",
+            ),
           ),
           ListTile(
             enabled: false,
@@ -79,8 +93,11 @@ class HomePageDesktop extends StatelessWidget {
                   style: TextStyle(color: LageColors.yellow),
                 )),
           ),
-          PropertiesList(
-            type: 'Apartamentos',
+          Observer(
+            builder: (context) => PropertiesList(
+              properties: apiController.properties.toList(),
+              type: "Apartamento",
+            ),
           ),
           ListTile(
             enabled: false,
@@ -99,8 +116,11 @@ class HomePageDesktop extends StatelessWidget {
                   style: TextStyle(color: LageColors.yellow),
                 )),
           ),
-          PropertiesList(
-            type: 'Sitio/Lote',
+          Observer(
+            builder: (context) => PropertiesList(
+              properties: apiController.properties.toList(),
+              type: "Sítio,Lote",
+            ),
           ),
           SizedBox(height: 30)
         ],

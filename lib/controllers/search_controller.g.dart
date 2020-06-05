@@ -39,6 +39,21 @@ mixin _$SearchController on _SearchControllerBase, Store {
     });
   }
 
+  final _$propertyTypesAtom = Atom(name: '_SearchControllerBase.propertyTypes');
+
+  @override
+  ObservableList<dynamic> get propertyTypes {
+    _$propertyTypesAtom.reportRead();
+    return super.propertyTypes;
+  }
+
+  @override
+  set propertyTypes(ObservableList<dynamic> value) {
+    _$propertyTypesAtom.reportWrite(value, super.propertyTypes, () {
+      super.propertyTypes = value;
+    });
+  }
+
   final _$methodAtom = Atom(name: '_SearchControllerBase.method');
 
   @override
@@ -51,6 +66,21 @@ mixin _$SearchController on _SearchControllerBase, Store {
   set method(String value) {
     _$methodAtom.reportWrite(value, super.method, () {
       super.method = value;
+    });
+  }
+
+  final _$methodTypesAtom = Atom(name: '_SearchControllerBase.methodTypes');
+
+  @override
+  ObservableList<dynamic> get methodTypes {
+    _$methodTypesAtom.reportRead();
+    return super.methodTypes;
+  }
+
+  @override
+  set methodTypes(ObservableList<dynamic> value) {
+    _$methodTypesAtom.reportWrite(value, super.methodTypes, () {
+      super.methodTypes = value;
     });
   }
 
@@ -91,11 +121,24 @@ mixin _$SearchController on _SearchControllerBase, Store {
   }
 
   @override
+  void showData() {
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
+        name: '_SearchControllerBase.showData');
+    try {
+      return super.showData();
+    } finally {
+      _$_SearchControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 text: ${text},
 propertyType: ${propertyType},
-method: ${method}
+propertyTypes: ${propertyTypes},
+method: ${method},
+methodTypes: ${methodTypes}
     ''';
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:site_lage/controllers/api_controller.dart';
 import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/pages/aboutUsPage.dart';
 import 'package:site_lage/pages/contactPage.dart';
@@ -9,8 +10,21 @@ import 'package:site_lage/pages/loginPage.dart';
 import 'package:site_lage/util/foorter/footer.dart';
 import 'package:site_lage/util/navigationBar/navigationBar.dart';
 
-class RootPage extends StatelessWidget {
+class RootPage extends StatefulWidget {
+  @override
+  RootPageState createState() => RootPageState();
+}
+
+class RootPageState extends State<RootPage> {
   final pageController = GetIt.I.get<CurrentPageController>();
+  final apiController = GetIt.I.get<ApiController>();
+
+  @override
+  void initState() {
+    apiController.getAllproperties();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

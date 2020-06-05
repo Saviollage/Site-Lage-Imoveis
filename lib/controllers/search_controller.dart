@@ -8,10 +8,25 @@ abstract class _SearchControllerBase with Store {
   String text = "";
 
   @observable
-  String propertyType = "";
+  String propertyType = "Todos";
 
   @observable
-  String method = "";
+  ObservableList propertyTypes = [
+    "Todos",
+    "Casa",
+    "Apartamento",
+    "Sítio",
+    "Lote",
+    "Chácara",
+    "Outros"
+  ].asObservable();
+
+  @observable
+  String method = "Aluguel e Venda";
+
+  @observable
+  ObservableList methodTypes =
+      ["Aluguel e Venda", "Aluguel", "Venda"].asObservable();
 
   @action
   void setText(String newText) {
@@ -26,5 +41,10 @@ abstract class _SearchControllerBase with Store {
   @action
   void setMethod(String newMethod) {
     method = newMethod;
+  }
+
+  @action
+  void showData() {
+    print(text + "\t" + propertyType + "\t" + method);
   }
 }
