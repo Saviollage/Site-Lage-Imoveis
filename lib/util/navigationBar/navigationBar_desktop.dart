@@ -21,6 +21,7 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
+              
               NavigationBarItem(
                 title: "Sobre nós",
                 onPressed: () => pageController.changePage(1),
@@ -39,7 +40,14 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
                 styled: false,
                 title: "Simuladores",
                 onPressed: () => pageController.changePage(3),
-              )
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              NavigationBarItem(
+                title: "Todos os Imóveis",
+                onPressed: () => pageController.changePage(4),
+              ),
             ],
           )
         ],

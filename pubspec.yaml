@@ -31,6 +31,8 @@ dependencies:
   http:
   responsive_builder:
   cached_network_image:
+  google_maps:
+  url_launcher:
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +53,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/logo/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

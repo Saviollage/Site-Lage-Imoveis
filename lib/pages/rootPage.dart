@@ -7,8 +7,10 @@ import 'package:site_lage/pages/aboutUsPage.dart';
 import 'package:site_lage/pages/contactPage.dart';
 import 'package:site_lage/pages/homePage.dart';
 import 'package:site_lage/pages/loginPage.dart';
+import 'package:site_lage/pages/simulationPage.dart';
 import 'package:site_lage/util/foorter/footer.dart';
 import 'package:site_lage/util/navigationBar/navigationBar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RootPage extends StatefulWidget {
   @override
@@ -28,30 +30,44 @@ class RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (OverscrollIndicatorNotification overScroll) {
-          overScroll.disallowGlow();
-          return false;
-        },
-        child: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              NavigationBar(),
-              Observer(
-                  builder: (context) => pageController.pageIndex == 0
-                      ? HomePage()
-                      : pageController.pageIndex == 1
-                          ? AboutUsPage()
-                          : pageController.pageIndex == 2
-                              ? ContactPage()
-                              : LoginPage()),
-              Footer()
-            ],
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: NotificationListener<OverscrollIndicatorNotification>(
+          onNotification: (OverscrollIndicatorNotification overScroll) {
+            overScroll.disallowGlow();
+            return false;
+          },
+          child: SingleChildScrollView(
+            physics: ClampingScrollPhysics(),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                NavigationBar(),
+                Observer(
+                    builder: (context) => pageController.pageIndex == 0
+                        ? HomePage()
+                        : pageController.pageIndex == 1
+                            ? AboutUsPage()
+                            : pageController.pageIndex == 2
+                                ? ContactPage()
+                                : pageController.pageIndex == 3
+                                    ? SimulationPage()
+                                    : LoginPage()),
+                Footer()
+              ],
+            ),
           ),
         ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: () =>
+            launch("https://api.whatsapp.com/send?phone=553138222535"),
+        child: Image.asset(
+          "images/whatsapp-24.png",
+          fit: BoxFit.none,
+        ),
+        backgroundColor: const Color(0xff25D366),
       ),
     );
   }

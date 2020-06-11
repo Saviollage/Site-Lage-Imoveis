@@ -6,14 +6,15 @@ class CurrentPageController = _CurrentPageControllerBase
 
 abstract class _CurrentPageControllerBase with Store {
   @observable
-  int pageIndex = 0;
+  int pageIndex = 3;
 
   /*
    * Páginas
    * 0 -> Home
    * 1 -> AboutUs
    * 2 -> Contact
-   * 3 -> Login
+   * 3 -> Simulation
+   * 4 -> All Properties
    */
 
   @action

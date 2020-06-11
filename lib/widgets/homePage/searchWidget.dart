@@ -15,9 +15,8 @@ class SearchWidget extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
             fit: BoxFit.cover,
-            image: NetworkImage(
-                "https://lageimoveis.s3.amazonaws.com/Lage_Wpp_$number.jpg")),
-      ),
+            image: AssetImage("images/Lage_Wpp_" + number.toString() + ".jpg"),
+      )),
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 20),
           color: Colors.black.withOpacity(0.5),

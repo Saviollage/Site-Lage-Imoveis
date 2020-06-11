@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/models/property.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class PropertyCard extends StatelessWidget {
   final Property property;
@@ -23,6 +23,40 @@ class PropertyCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(blurRadius: 10, offset: Offset(5, 5), color: Colors.grey)
           ]),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.7),
+            borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(10),
+                bottomLeft: Radius.circular(10)),
+          ),
+          child: Center(
+            child: ListTile(
+              title: Text(
+                property.title,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                property.address,
+                style: TextStyle(color: LageColors.yellow, fontSize: 20),
+              ),
+              trailing: Text(
+                property.forSale ? "Venda" : "Aluguel",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontStyle: FontStyle.italic),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
