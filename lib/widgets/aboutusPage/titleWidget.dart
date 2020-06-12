@@ -12,7 +12,7 @@ class AboutUsTitleWidget extends StatelessWidget {
               image: AssetImage("assets/images/AboutUs.jpg")),
         ),
         child: Container(
-          color: Colors.black.withOpacity(0.5),
+          color: Colors.black.withOpacity(0.8),
           child: Center(
             child: Text(
               "Sobre nós",

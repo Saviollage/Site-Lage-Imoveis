@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SimulationTitleWidget extends StatelessWidget {
+class ContactTitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -9,13 +9,13 @@ class SimulationTitleWidget extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage("assets/images/Simulation.jpeg")),
+              image: AssetImage("assets/images/contact.jpg")),
         ),
         child: Container(
           color: Colors.black.withOpacity(0.8),
           child: Center(
             child: Text(
-              "SIMULADORES",
+              "Contato",
               style: TextStyle(
                   fontSize: 70,
                   color: Colors.white,

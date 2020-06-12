@@ -47,7 +47,7 @@ class RootPageState extends State<RootPage> {
                 NavigationBar(),
                 ConstrainedBox(
                   constraints: BoxConstraints(
-                      minHeight: MediaQuery.of(context).size.height * 0.8),
+                      minHeight: MediaQuery.of(context).size.height * 0.85),
                   child: Observer(
                       builder: (context) => pageController.pageIndex == 0
                           ? HomePage()

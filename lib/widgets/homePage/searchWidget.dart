@@ -19,7 +19,7 @@ class SearchWidget extends StatelessWidget {
       )),
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 20),
-          color: Colors.black.withOpacity(0.5),
+          color: Colors.black.withOpacity(0.8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

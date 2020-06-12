@@ -10,6 +10,7 @@ class NavigationBar extends StatelessWidget {
     return Container(
         alignment: Alignment.topCenter,
         child: ScreenTypeLayout(
+          
           desktop: NavigationBarDesktopAndTablet(),
           tablet: NavigationBarDesktopAndTablet(),
           mobile: NavigationBarMobile(),
