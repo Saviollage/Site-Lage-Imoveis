@@ -7,6 +7,7 @@ import 'package:site_lage/util/navigationBar/navigationBarLogo.dart';
 class NavigationBarDesktopAndTablet extends StatelessWidget {
   
   final pageController = GetIt.I.get<CurrentPageController>();
+  
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -7,6 +7,7 @@ import 'package:site_lage/pages/aboutUsPage.dart';
 import 'package:site_lage/pages/contactPage.dart';
 import 'package:site_lage/pages/homePage.dart';
 import 'package:site_lage/pages/loginPage.dart';
+import 'package:site_lage/pages/properiesPage.dart';
 import 'package:site_lage/pages/simulationPage.dart';
 import 'package:site_lage/util/foorter/footer.dart';
 import 'package:site_lage/util/navigationBar/navigationBar.dart';
@@ -44,16 +45,20 @@ class RootPageState extends State<RootPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 NavigationBar(),
-                Observer(
-                    builder: (context) => pageController.pageIndex == 0
-                        ? HomePage()
-                        : pageController.pageIndex == 1
-                            ? AboutUsPage()
-                            : pageController.pageIndex == 2
-                                ? ContactPage()
-                                : pageController.pageIndex == 3
-                                    ? SimulationPage()
-                                    : LoginPage()),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height * 0.8),
+                  child: Observer(
+                      builder: (context) => pageController.pageIndex == 0
+                          ? HomePage()
+                          : pageController.pageIndex == 1
+                              ? AboutUsPage()
+                              : pageController.pageIndex == 2
+                                  ? ContactPage()
+                                  : pageController.pageIndex == 3
+                                      ? SimulationPage()
+                                      : PropertiesPage()),
+                ),
                 Footer()
               ],
             ),
