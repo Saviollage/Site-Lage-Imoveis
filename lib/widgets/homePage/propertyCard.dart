@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
+import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/models/property.dart';
+import 'package:site_lage/pages/propertyPage.dart';
 
 class PropertyCard extends StatelessWidget {
+  final pageController = GetIt.I.get<CurrentPageController>();
   final Property property;
 
-  const PropertyCard({Key key, this.property}) : super(key: key);
+  PropertyCard({Key key, this.property});
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +58,10 @@ class PropertyCard extends StatelessWidget {
                     fontSize: 16,
                     fontStyle: FontStyle.italic),
               ),
+              onTap: () {
+                pageController.setProperty(property);
+                pageController.changePage(5);
+              },
             ),
           ),
         ),

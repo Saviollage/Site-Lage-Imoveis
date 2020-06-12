@@ -8,6 +8,7 @@ import 'package:site_lage/pages/contactPage.dart';
 import 'package:site_lage/pages/homePage.dart';
 import 'package:site_lage/pages/loginPage.dart';
 import 'package:site_lage/pages/properiesPage.dart';
+import 'package:site_lage/pages/propertyPage.dart';
 import 'package:site_lage/pages/simulationPage.dart';
 import 'package:site_lage/util/foorter/footer.dart';
 import 'package:site_lage/util/navigationBar/navigationBar.dart';
@@ -57,7 +58,11 @@ class RootPageState extends State<RootPage> {
                                   ? ContactPage()
                                   : pageController.pageIndex == 3
                                       ? SimulationPage()
-                                      : PropertiesPage()),
+                                      : pageController.pageIndex == 4
+                                          ? PropertiesPage()
+                                          : PropertyPage(
+                                              property: pageController.property,
+                                            )),
                 ),
                 Footer()
               ],
