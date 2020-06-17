@@ -102,6 +102,17 @@ mixin _$EmailController on _EmailControllerBase, Store {
   }
 
   @override
+  void reset() {
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
+        name: '_EmailControllerBase.reset');
+    try {
+      return super.reset();
+    } finally {
+      _$_EmailControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 name: ${name},

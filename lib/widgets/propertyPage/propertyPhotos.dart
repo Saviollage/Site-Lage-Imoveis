@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:site_lage/components/colors.dart';
+import 'package:site_lage/controllers/property_controller.dart';
 
 class PropertyPhotos extends StatelessWidget {
+  final propertyController = PropertyController();
   final List images;
 
-  const PropertyPhotos({Key key, this.images}) : super(key: key);
+  PropertyPhotos({Key key, this.images}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,6 +15,17 @@ class PropertyPhotos extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
+          Observer(
+            builder: (_) => Container(
+              height: 350,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      fit: BoxFit.fitHeight,
+                      image: NetworkImage(
+                          images.elementAt(propertyController.currentIndex)))),
+            ),
+          ),
           SizedBox(
             height: 40,
           ),
@@ -30,14 +44,21 @@ class PropertyPhotos extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, childAspectRatio: 400 / 300),
               itemCount: images.length,
-              itemBuilder: (context, index) => Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(images.elementAt(index)))),
+              itemBuilder: (context, index) => InkWell(
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(images.elementAt(index)))),
+                    ),
+                    onTap: () => propertyController.setIndex(index),
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
                   ))
         ],
       ),

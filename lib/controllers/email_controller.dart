@@ -28,8 +28,15 @@ abstract class _EmailControllerBase with Store {
     text = val;
   }
 
-  @action 
+  @action
   void submit() {
     print(name + "\t" + subject + "\t" + text);
+  }
+
+  @action
+  void reset() {
+    name = "";
+    subject = "";
+    text = "";
   }
 }

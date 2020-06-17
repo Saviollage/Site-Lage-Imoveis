@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/controllers/email_controller.dart';
-import 'package:site_lage/widgets/contactPage/contactButton.dart';
 import 'package:site_lage/widgets/contactPage/nameBar.dart';
 import 'package:site_lage/widgets/contactPage/subjectBar.dart';
 import 'package:site_lage/widgets/contactPage/submitButton.dart';

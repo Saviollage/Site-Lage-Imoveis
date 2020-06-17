@@ -24,8 +24,34 @@ mixin _$CurrentPageController on _CurrentPageControllerBase, Store {
     });
   }
 
+  final _$propertyAtom = Atom(name: '_CurrentPageControllerBase.property');
+
+  @override
+  Property get property {
+    _$propertyAtom.reportRead();
+    return super.property;
+  }
+
+  @override
+  set property(Property value) {
+    _$propertyAtom.reportWrite(value, super.property, () {
+      super.property = value;
+    });
+  }
+
   final _$_CurrentPageControllerBaseActionController =
       ActionController(name: '_CurrentPageControllerBase');
+
+  @override
+  void setProperty(Property p) {
+    final _$actionInfo = _$_CurrentPageControllerBaseActionController
+        .startAction(name: '_CurrentPageControllerBase.setProperty');
+    try {
+      return super.setProperty(p);
+    } finally {
+      _$_CurrentPageControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changePage(int index) {
@@ -41,7 +67,8 @@ mixin _$CurrentPageController on _CurrentPageControllerBase, Store {
   @override
   String toString() {
     return '''
-pageIndex: ${pageIndex}
+pageIndex: ${pageIndex},
+property: ${property}
     ''';
   }
 }
