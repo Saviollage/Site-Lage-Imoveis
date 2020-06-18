@@ -9,6 +9,8 @@ class PropertyCardTile extends StatelessWidget {
 
   final pageController = GetIt.I.get<CurrentPageController>();
 
+  final scrollController = GetIt.I.get<ScrollController>();
+
   PropertyCardTile({Key key, @required this.property}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,9 @@ class PropertyCardTile extends StatelessWidget {
                 color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic),
           ),
           onTap: () {
+            scrollController.animateTo(0,
+                duration: new Duration(milliseconds: 500),
+                curve: Curves.bounceIn);
             pageController.setProperty(property);
             pageController.changePage(5);
           },

@@ -42,6 +42,7 @@ class PropertyPhotos extends StatelessWidget {
             ),
           ),
           GridView.builder(
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, childAspectRatio: 400 / 300),

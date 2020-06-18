@@ -6,6 +6,7 @@ import 'package:site_lage/models/property.dart';
 
 class PropertyCardMobile extends StatelessWidget {
   final pageController = GetIt.I.get<CurrentPageController>();
+  final scrollController = GetIt.I.get<ScrollController>();
   final Property property;
 
   PropertyCardMobile({Key key, this.property});
@@ -57,6 +58,9 @@ class PropertyCardMobile extends StatelessWidget {
                   fontStyle: FontStyle.italic),
             ),
             onTap: () {
+              scrollController.animateTo(0,
+                    duration: new Duration(milliseconds: 500),
+                    curve: Curves.bounceIn);
               pageController.setProperty(property);
               pageController.changePage(5);
             },

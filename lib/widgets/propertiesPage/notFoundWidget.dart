@@ -15,7 +15,7 @@ class NotFoundWidget extends StatelessWidget {
           Container(
             height: size,
             decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage("images/House.png"))),
+                image: DecorationImage(image: AssetImage("assets/images/House.png"))),
           ),
           ListTile(
             enabled: false,

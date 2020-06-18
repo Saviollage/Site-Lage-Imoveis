@@ -5,7 +5,6 @@ import 'package:url_launcher/url_launcher.dart';
 class SimulationPageMobile extends StatelessWidget {
   final List options;
   final List links;
-  
 
   const SimulationPageMobile({Key key, this.options, this.links})
       : super(key: key);
@@ -31,6 +30,7 @@ class SimulationPageMobile extends StatelessWidget {
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: MediaQuery.of(context).size.width ~/ 200,
@@ -43,7 +43,7 @@ class SimulationPageMobile extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                                 image: AssetImage(
-                                    "Images/" + options[index] + ".jpg"),
+                                    "assets/images/" + options[index] + ".jpg"),
                                 fit: BoxFit.fill)),
                       ),
                       canRequestFocus: true,

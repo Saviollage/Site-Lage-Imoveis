@@ -24,7 +24,7 @@ class SearchWidget extends StatelessWidget {
       decoration: BoxDecoration(
           image: DecorationImage(
         fit: BoxFit.cover,
-        image: AssetImage("images/Lage_Wpp_" + number.toString() + ".jpg"),
+        image: AssetImage("assets/images/Lage_Wpp_" + number.toString() + ".jpg"),
       )),
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 20),

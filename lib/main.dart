@@ -14,6 +14,7 @@ void main() {
   getIt.registerSingleton(ApiController());
   getIt.registerSingleton(SearchController());
   getIt.registerSingleton(EmailController());
+  getIt.registerSingleton(ScrollController());
 }
 
 class MyApp extends StatelessWidget {

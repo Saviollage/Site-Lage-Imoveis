@@ -16,25 +16,28 @@ class PropertiesPageDesktop extends StatelessWidget {
       children: [
         PropertiesTitleWidget(
           size: 600,
-            textSize: 70,
-            percentSize: 0.6,
+          textSize: 70,
+          percentSize: 0.6,
         ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
           child: Observer(
-            builder: (context) => searchController.filteredList.length > 0?GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: MediaQuery.of(context).size.width ~/ 300,
-                  childAspectRatio: 400 / 300),
-              itemCount:searchController.filteredList.length,
-              itemBuilder: (context, index) => PropertyCard(
-                property:searchController.filteredList.elementAt(index),
-              ),
-            ):
-            NotFoundWidget(
-              size: 300,
-            ),
+            builder: (context) => searchController.filteredList.length > 0
+                ? GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount:
+                            MediaQuery.of(context).size.width ~/ 300,
+                        childAspectRatio: 400 / 300),
+                    itemCount: searchController.filteredList.length,
+                    itemBuilder: (context, index) => PropertyCard(
+                      property: searchController.filteredList.elementAt(index),
+                    ),
+                  )
+                : NotFoundWidget(
+                    size: 300,
+                  ),
           ),
         )
       ],

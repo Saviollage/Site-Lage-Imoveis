@@ -24,12 +24,14 @@ class RootPageState extends State<RootPage> {
   final pageController = GetIt.I.get<CurrentPageController>();
   final apiController = GetIt.I.get<ApiController>();
   final searchController = GetIt.I.get<SearchController>();
+  final scrollController = GetIt.I.get<ScrollController>();
 
   @override
   void initState() {
     apiController.getAllproperties().then((a) {
       searchController.getProperties(a);
     });
+
     super.initState();
   }
 
@@ -43,33 +45,38 @@ class RootPageState extends State<RootPage> {
             overScroll.disallowGlow();
             return false;
           },
-          child: SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                NavigationBar(),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                      minHeight: MediaQuery.of(context).size.height * 0.85),
-                  child: Observer(
-                      builder: (context) => pageController.pageIndex == 0
-                          ? HomePage()
-                          : pageController.pageIndex == 1
-                              ? AboutUsPage()
-                              : pageController.pageIndex == 2
-                                  ? ContactPage()
-                                  : pageController.pageIndex == 3
-                                      ? SimulationPage()
-                                      : pageController.pageIndex == 4
-                                          ? PropertiesPage()
-                                          : PropertyPage(
-                                              property: pageController.property,
-                                            )),
-                ),
-                Footer()
-              ],
+          child: Scrollbar(
+            controller: scrollController,
+            child: SingleChildScrollView(
+              controller: scrollController,
+              physics: ClampingScrollPhysics(),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  NavigationBar(),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                        minHeight: MediaQuery.of(context).size.height * 0.85),
+                    child: Observer(
+                        builder: (context) => pageController.pageIndex == 0
+                            ? HomePage()
+                            : pageController.pageIndex == 1
+                                ? AboutUsPage()
+                                : pageController.pageIndex == 2
+                                    ? ContactPage()
+                                    : pageController.pageIndex == 3
+                                        ? SimulationPage()
+                                        : pageController.pageIndex == 4
+                                            ? PropertiesPage()
+                                            : PropertyPage(
+                                                property:
+                                                    pageController.property,
+                                              )),
+                  ),
+                  Footer()
+                ],
+              ),
             ),
           ),
         ),
@@ -78,7 +85,7 @@ class RootPageState extends State<RootPage> {
         onPressed: () =>
             launch("https://api.whatsapp.com/send?phone=553138222535"),
         child: Image.asset(
-          "images/whatsapp-24.png",
+          "assets/images/whatsapp-24.png",
           fit: BoxFit.none,
         ),
         backgroundColor: const Color(0xff25D366),
