@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:site_lage/models/property.dart';
-import 'package:site_lage/util/foorter/footer.dart';
-import 'package:site_lage/util/navigationBar/navigationBar.dart';
+import 'package:site_lage/widgets/propertyPage/propertyContact.dart';
 import 'package:site_lage/widgets/propertyPage/propertyDetails.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:site_lage/widgets/propertyPage/propertyPhotos.dart';
 
 class PropertyPageMobile extends StatelessWidget {
   final Property property;
@@ -12,33 +11,36 @@ class PropertyPageMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: NotificationListener<OverscrollIndicatorNotification>(
-          onNotification: (OverscrollIndicatorNotification overScroll) {
-            overScroll.disallowGlow();
-            return false;
-          },
-          child: SingleChildScrollView(
-            physics: ClampingScrollPhysics(),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [NavigationBar(), PropertyDetails(), Footer()],
-            ),
+    return ConstrainedBox(
+        constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height * 0.85),
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              PropertyDetails(
+                property: property,
+                percentSize: 1,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              PropertyPhotos(
+                images: property.images,
+                percentSize: 1,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: 1,
+                color: Colors.grey,
+                margin: EdgeInsets.symmetric(vertical: 15),
+              ),
+              PropertyContact(percentSize: 1)
+            ],
           ),
-        ),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: () => launch(
-            "https://api.whatsapp.com/send?phone=553138222535&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20sobre%20o%20imovel%20${property.title}%20${property.address}"),
-        child: Image.asset(
-          "images/whatsapp-24.png",
-          fit: BoxFit.none,
-        ),
-        backgroundColor: const Color(0xff25D366),
-      ),
-    );
+        ));
   }
 }

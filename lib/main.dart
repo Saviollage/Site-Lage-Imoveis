@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Lage Imóveis',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
       ),

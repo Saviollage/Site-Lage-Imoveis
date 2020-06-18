@@ -12,8 +12,8 @@ class MapWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width * size,
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(blurRadius: 10, offset: Offset(5, 5), color: Colors.grey)
-      ], borderRadius: BorderRadius.circular(20), color: Colors.red),
-      // child: MapW(),
+      ], borderRadius: BorderRadius.circular(20), color: Colors.white),
+       child: MapW(),
     );
   }
 }

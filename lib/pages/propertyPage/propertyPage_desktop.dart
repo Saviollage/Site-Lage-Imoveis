@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:site_lage/models/property.dart';
 import 'package:site_lage/util/foorter/footer.dart';
 import 'package:site_lage/util/navigationBar/navigationBar.dart';
+import 'package:site_lage/widgets/propertyPage/propertyContact.dart';
 import 'package:site_lage/widgets/propertyPage/propertyDetails.dart';
 import 'package:site_lage/widgets/propertyPage/propertyPhotos.dart';
 
@@ -24,11 +25,19 @@ class PropertyPageDesktop extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              PropertyDetails(
-                property: property,
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  PropertyDetails(
+                    property: property,
+                    percentSize: 0.4,
+                  ),
+                  PropertyContact(percentSize: 0.4)
+                ],
               ),
               PropertyPhotos(
                 images: property.images,
+                percentSize: 0.4,
               ),
             ],
           ),

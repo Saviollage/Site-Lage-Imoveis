@@ -36,7 +36,7 @@ class SubjectBar extends StatelessWidget {
           hintText: 'Assunto',
           hintStyle: TextStyle(fontSize: 16),
         ),
-        maxLines: 1,
+        maxLines: 2,
         maxLength: 50,
         onChanged: emailController.setSubject,
       ),

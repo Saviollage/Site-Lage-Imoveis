@@ -6,12 +6,14 @@ import 'package:site_lage/controllers/property_controller.dart';
 class PropertyPhotos extends StatelessWidget {
   final propertyController = PropertyController();
   final List images;
+  final double percentSize;
 
-  PropertyPhotos({Key key, this.images}) : super(key: key);
+  PropertyPhotos({Key key, @required this.images, @required this.percentSize})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.4,
+      width: MediaQuery.of(context).size.width * percentSize,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
