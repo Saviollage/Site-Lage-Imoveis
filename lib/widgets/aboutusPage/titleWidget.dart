@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AboutUsTitleWidget extends StatelessWidget {
+  final double size;
+  final double textSize;
+
+  const AboutUsTitleWidget({Key key, this.size, this.textSize}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 600,
+        height: size,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -17,7 +21,7 @@ class AboutUsTitleWidget extends StatelessWidget {
             child: Text(
               "Sobre nós",
               style: TextStyle(
-                  fontSize: 70,
+                  fontSize: textSize,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
