@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class SimulationTitleWidget extends StatelessWidget {
+  final double size;
+  final double fontSize;
+
+  const SimulationTitleWidget(
+      {Key key, @required this.size, @required this.fontSize})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 600,
+        height: size,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -17,7 +23,7 @@ class SimulationTitleWidget extends StatelessWidget {
             child: Text(
               "SIMULADORES",
               style: TextStyle(
-                  fontSize: 70,
+                  fontSize: fontSize,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),

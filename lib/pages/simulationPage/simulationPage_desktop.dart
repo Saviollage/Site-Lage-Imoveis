@@ -3,20 +3,19 @@ import 'package:site_lage/widgets/simulations/simulationTitle.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SimulationPageDesktop extends StatelessWidget {
-  final List options = ["BB", "Caixa", "Santander", "Bradesco", "Itau"];
-  final List links = [
-    "https://www42.bb.com.br/portalbb/imobiliario/creditoimobiliario/simular,802,2250,2250.bbx",
-    "http://www8.caixa.gov.br/siopiinternet-web/simulaOperacaoInternet.do?method=inicializarCasoUso",
-    "https://www.santander.com.br/portal/wps/script/templates/GCMRequest.do?page=5516",
-    "https://banco.bradesco/html/classic/produtos-servicos/emprestimo-e-financiamento/encontre-seu-credito/simuladores-imoveis.shtm#box1-comprar",
-    "https://www.itau.com.br/creditos-financiamentos/imoveis/simulador/"
-  ];
+  
+  final List options;
+  final List links;
 
+  const SimulationPageDesktop({Key key, this.options, this.links}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        SimulationTitleWidget(),
+        SimulationTitleWidget(
+          size: 600,
+          fontSize: 70,
+        ),
         SizedBox(
           height: 50,
         ),
