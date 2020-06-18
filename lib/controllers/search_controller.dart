@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:site_lage/models/property.dart';
 part 'search_controller.g.dart';
 
 class SearchController = _SearchControllerBase with _$SearchController;
@@ -28,6 +29,14 @@ abstract class _SearchControllerBase with Store {
   ObservableList methodTypes =
       ["Aluguel e Venda", "Aluguel", "Venda"].asObservable();
 
+  @observable
+  ObservableList<Property> properties;
+
+  @action
+  void getProperties(List<Property> l) {
+    properties = new List<Property>.from(l).asObservable();
+  }
+
   @action
   void setText(String newText) {
     text = newText;
@@ -46,5 +55,64 @@ abstract class _SearchControllerBase with Store {
   @action
   void showData() {
     print(text + "\t" + propertyType + "\t" + method);
+  }
+
+  @action
+  void reset() {
+    text = "";
+    propertyType = "Todos";
+    method = "Aluguel e Venda";
+  }
+
+  @computed
+  get filteredList {
+    if (text.isEmpty) {
+      if (propertyType == "Todos") {
+        if (method == "Aluguel e Venda")
+          return properties;
+        else if (method == "Aluguel")
+          return properties.where((element) => element.forRent);
+        else
+          return properties.where((element) => element.forSale);
+      } else {
+        if (method == "Aluguel e Venda")
+          return properties.where((element) => element.type == propertyType);
+        else if (method == "Aluguel")
+          return properties.where(
+              (element) => element.type == propertyType && element.forRent);
+        else
+          return properties.where(
+              (element) => element.type == propertyType && element.forSale);
+      }
+    } else {
+      if (propertyType == "Todos") {
+        if (method == "Aluguel e Venda")
+          return properties.where((element) =>
+              element.address.toLowerCase().contains(text.toLowerCase()));
+        else if (method == "Aluguel")
+          return properties.where((element) =>
+              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              element.forRent);
+        else
+          return properties.where((element) =>
+              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              element.forSale);
+      } else {
+        if (method == "Aluguel e Venda")
+          return properties.where((element) =>
+              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              element.type == propertyType);
+        else if (method == "Aluguel")
+          return properties.where((element) =>
+              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              element.type == propertyType &&
+              element.forRent);
+        else
+          return properties.where((element) =>
+              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              element.type == propertyType &&
+              element.forSale);
+      }
+    }
   }
 }

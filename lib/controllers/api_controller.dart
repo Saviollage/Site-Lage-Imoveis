@@ -14,7 +14,7 @@ abstract class _ApiControllerBase with Store {
   ObservableList<Property> properties = new ObservableList<Property>();
 
   @action
-  Future<void> getAllproperties() async {
+  Future<List<Property>> getAllproperties() async {
     try {
       final response = await http
           .get(Constants.url + 'properties')
@@ -22,8 +22,11 @@ abstract class _ApiControllerBase with Store {
       if (response.statusCode == 200) {
         var data = json.decode(utf8.decode(response.bodyBytes));
         properties = new List.generate(
-            data.length, (item) => Property.fromJson(data[item])).asObservable();
+                data.length, (item) => Property.fromJson(data[item]))
+            .asObservable();
+        return properties.toList();
       }
+      return null;
     } catch (error, stacktrace) {
       print("Erro ao carregar lista" + stacktrace.toString());
       return null;

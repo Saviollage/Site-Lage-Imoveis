@@ -9,6 +9,14 @@ part of 'search_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$SearchController on _SearchControllerBase, Store {
+  Computed<dynamic> _$filteredListComputed;
+
+  @override
+  dynamic get filteredList =>
+      (_$filteredListComputed ??= Computed<dynamic>(() => super.filteredList,
+              name: '_SearchControllerBase.filteredList'))
+          .value;
+
   final _$textAtom = Atom(name: '_SearchControllerBase.text');
 
   @override
@@ -84,8 +92,34 @@ mixin _$SearchController on _SearchControllerBase, Store {
     });
   }
 
+  final _$propertiesAtom = Atom(name: '_SearchControllerBase.properties');
+
+  @override
+  ObservableList<Property> get properties {
+    _$propertiesAtom.reportRead();
+    return super.properties;
+  }
+
+  @override
+  set properties(ObservableList<Property> value) {
+    _$propertiesAtom.reportWrite(value, super.properties, () {
+      super.properties = value;
+    });
+  }
+
   final _$_SearchControllerBaseActionController =
       ActionController(name: '_SearchControllerBase');
+
+  @override
+  void getProperties(List<Property> l) {
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
+        name: '_SearchControllerBase.getProperties');
+    try {
+      return super.getProperties(l);
+    } finally {
+      _$_SearchControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setText(String newText) {
@@ -132,13 +166,26 @@ mixin _$SearchController on _SearchControllerBase, Store {
   }
 
   @override
+  void reset() {
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
+        name: '_SearchControllerBase.reset');
+    try {
+      return super.reset();
+    } finally {
+      _$_SearchControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 text: ${text},
 propertyType: ${propertyType},
 propertyTypes: ${propertyTypes},
 method: ${method},
-methodTypes: ${methodTypes}
+methodTypes: ${methodTypes},
+properties: ${properties},
+filteredList: ${filteredList}
     ''';
   }
 }

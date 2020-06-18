@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/controllers/page_controller.dart';
+import 'package:site_lage/controllers/search_controller.dart';
 import 'package:site_lage/util/navigationBar/navigationBarItem.dart';
 import 'package:site_lage/util/navigationBar/navigationBarLogo.dart';
 
 class NavigationBarDesktopAndTablet extends StatelessWidget {
-  
   final pageController = GetIt.I.get<CurrentPageController>();
-  
+  final searchController = GetIt.I.get<SearchController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,13 +16,10 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          NavigationBarLogo(
-            onPressed: () => pageController.changePage(0)
-          ),
+          NavigationBarLogo(onPressed: () => pageController.changePage(0)),
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              
               NavigationBarItem(
                 title: "Sobre nós",
                 onPressed: () => pageController.changePage(1),
@@ -47,7 +44,10 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
               ),
               NavigationBarItem(
                 title: "Todos os Imóveis",
-                onPressed: () => pageController.changePage(4),
+                onPressed: () {
+                  searchController.reset();
+                  pageController.changePage(4);
+                },
               ),
             ],
           )

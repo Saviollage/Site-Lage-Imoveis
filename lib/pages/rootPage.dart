@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/controllers/api_controller.dart';
 import 'package:site_lage/controllers/page_controller.dart';
+import 'package:site_lage/controllers/search_controller.dart';
 import 'package:site_lage/pages/aboutUsPage.dart';
 import 'package:site_lage/pages/contactPage.dart';
 import 'package:site_lage/pages/homePage.dart';
@@ -22,10 +23,13 @@ class RootPage extends StatefulWidget {
 class RootPageState extends State<RootPage> {
   final pageController = GetIt.I.get<CurrentPageController>();
   final apiController = GetIt.I.get<ApiController>();
+  final searchController = GetIt.I.get<SearchController>();
 
   @override
   void initState() {
-    apiController.getAllproperties();
+    apiController.getAllproperties().then((a) {
+      searchController.getProperties(a);
+    });
     super.initState();
   }
 

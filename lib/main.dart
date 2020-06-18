@@ -11,8 +11,8 @@ void main() {
   runApp(MyApp());
   GetIt getIt = GetIt.I;
   getIt.registerSingleton(CurrentPageController());
-  getIt.registerSingleton(SearchController());
   getIt.registerSingleton(ApiController());
+  getIt.registerSingleton(SearchController());
   getIt.registerSingleton(EmailController());
 }
 

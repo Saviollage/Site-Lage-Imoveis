@@ -41,7 +41,7 @@ class DataWidget extends StatelessWidget {
         ListTile(
           enabled: false,
           title: Text(
-            "Mais alguma dúvida? Nos envie um email!",
+            "Alguma dúvida? Nos envie um email!",
             style: TextStyle(color: Colors.black, fontSize: 18),
           ),
         ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:site_lage/widgets/homePage/dropdownButtons.dart';
+import 'package:site_lage/widgets/homePage/searchBar.dart';
+import 'package:site_lage/widgets/homePage/searchButton.dart';
 
 class PropertiesTitleWidget extends StatelessWidget {
   @override
@@ -13,14 +16,33 @@ class PropertiesTitleWidget extends StatelessWidget {
         ),
         child: Container(
           color: Colors.black.withOpacity(0.8),
-          child: Center(
-            child: Text(
-              "Todos os imóveis",
-              style: TextStyle(
-                  fontSize: 70,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-            ),
+          child: Column(
+            
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Center(
+                child: Text(
+                  "Todos os imóveis",
+                  style: TextStyle(
+                      fontSize: 70,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Column(
+                children: [
+                  SearchBar(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  DropdownButtons(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SearchButton()
+                ],
+              )
+            ],
           ),
         ));
   }

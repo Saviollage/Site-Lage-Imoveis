@@ -5,16 +5,21 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/controllers/api_controller.dart';
+import 'package:site_lage/controllers/page_controller.dart';
+import 'package:site_lage/controllers/search_controller.dart';
 import 'package:site_lage/widgets/homePage/propertiesList.dart';
 import 'package:site_lage/widgets/homePage/searchWidget.dart';
 
 class HomePageDesktop extends StatelessWidget {
   final apiController = GetIt.I.get<ApiController>();
 
+  final pageController = GetIt.I.get<CurrentPageController>();
+  final searchController = GetIt.I.get<SearchController>();
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+        child: Observer(
+      builder: (_) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SearchWidget(
@@ -33,12 +38,6 @@ class HomePageDesktop extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
-            trailing: FlatButton(
-                onPressed: null,
-                child: Text(
-                  "Ver mais",
-                  style: TextStyle(color: LageColors.yellow),
-                )),
           ),
           Observer(
             builder: (context) => PropertiesList(
@@ -53,78 +52,169 @@ class HomePageDesktop extends StatelessWidget {
               fit: BoxFit.fitWidth,
             ),
           ),
-          ListTile(
-            enabled: false,
-            contentPadding: EdgeInsets.symmetric(horizontal: 20),
-            title: Text(
-              "Casas",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-            trailing: FlatButton(
-                onPressed: null,
-                child: Text(
-                  "Ver mais",
-                  style: TextStyle(color: LageColors.yellow),
-                )),
-          ),
-          Observer(
-            builder: (context) => PropertiesList(
-              properties: apiController.properties.toList(),
-              type: "Casa",
-            ),
-          ),
-          ListTile(
-            enabled: false,
-            contentPadding: EdgeInsets.symmetric(horizontal: 20),
-            title: Text(
-              "Apartamentos",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-            trailing: FlatButton(
-                onPressed: null,
-                child: Text(
-                  "Ver mais",
-                  style: TextStyle(color: LageColors.yellow),
-                )),
-          ),
-          Observer(
-            builder: (context) => PropertiesList(
-              properties: apiController.properties.toList(),
-              type: "Apartamento",
-            ),
-          ),
-          ListTile(
-            enabled: false,
-            contentPadding: EdgeInsets.symmetric(horizontal: 20),
-            title: Text(
-              "Sítios e Lotes",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-            trailing: FlatButton(
-                onPressed: null,
-                child: Text(
-                  "Ver mais",
-                  style: TextStyle(color: LageColors.yellow),
-                )),
-          ),
-          Observer(
-            builder: (context) => PropertiesList(
-              properties: apiController.properties.toList(),
-              type: "Sítio,Lote",
-            ),
-          ),
+          new List.from(apiController.properties)
+                      .where((element) => element.type == "Casa")
+                      .length ==
+                  0
+              ? Container()
+              : ListTile(
+                  enabled: false,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                  title: Text(
+                    "Casas",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  trailing: FlatButton(
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      onPressed: () {
+                        searchController.setpropertyType("Casa");
+                        pageController.changePage(4);
+                      },
+                      child: Text(
+                        "Ver mais",
+                        style: TextStyle(color: LageColors.yellow),
+                      )),
+                ),
+          new List.from(apiController.properties)
+                      .where((element) => element.type == "Casa")
+                      .length ==
+                  0
+              ? Container()
+              : Observer(
+                  builder: (context) => PropertiesList(
+                    properties: apiController.properties.toList(),
+                    type: "Casa",
+                  ),
+                ),
+          new List.from(apiController.properties)
+                      .where((element) => element.type == "Apartamento")
+                      .length ==
+                  0
+              ? Container()
+              : ListTile(
+                  enabled: false,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                  title: Text(
+                    "Apartamentos",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  trailing: FlatButton(
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      onPressed: () {
+                        searchController.setpropertyType("Apartamento");
+                        pageController.changePage(4);
+                      },
+                      child: Text(
+                        "Ver mais",
+                        style: TextStyle(color: LageColors.yellow),
+                      )),
+                ),
+          new List.from(apiController.properties)
+                      .where((element) => element.type == "Apartamento")
+                      .length ==
+                  0
+              ? Container()
+              : Observer(
+                  builder: (context) => PropertiesList(
+                    properties: apiController.properties.toList(),
+                    type: "Apartamento",
+                  ),
+                ),
+          new List.from(apiController.properties)
+                      .where((element) => element.type == "Sítio")
+                      .length ==
+                  0
+              ? Container()
+              : ListTile(
+                  enabled: false,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                  title: Text(
+                    "Sítios",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  trailing: FlatButton(
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      onPressed: () {
+                        searchController.setpropertyType("Sítio");
+                        pageController.changePage(4);
+                      },
+                      child: Text(
+                        "Ver mais",
+                        style: TextStyle(color: LageColors.yellow),
+                      )),
+                ),
+          new List.from(apiController.properties)
+                      .where((element) => element.type == "Sítio")
+                      .length ==
+                  0
+              ? Container()
+              : Observer(
+                  builder: (context) => PropertiesList(
+                    properties: apiController.properties.toList(),
+                    type: "Sítio",
+                  ),
+                ),
+          new List.from(apiController.properties)
+                      .where((element) => element.type == "Lote")
+                      .length ==
+                  0
+              ? Container()
+              : ListTile(
+                  enabled: false,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                  title: Text(
+                    "Lotes",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  trailing: FlatButton(
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      onPressed: () {
+                        searchController.setpropertyType("Lote");
+                        pageController.changePage(4);
+                      },
+                      child: Text(
+                        "Ver mais",
+                        style: TextStyle(color: LageColors.yellow),
+                      )),
+                ),
+          new List.from(apiController.properties)
+                      .where((element) => element.type == "Lote")
+                      .length ==
+                  0
+              ? Container()
+              : Observer(
+                  builder: (context) => PropertiesList(
+                    properties: apiController.properties.toList(),
+                    type: "Lote",
+                  ),
+                ),
           SizedBox(height: 30)
         ],
       ),
-    );
+    ));
   }
 }

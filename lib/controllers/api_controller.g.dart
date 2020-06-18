@@ -28,7 +28,7 @@ mixin _$ApiController on _ApiControllerBase, Store {
       AsyncAction('_ApiControllerBase.getAllproperties');
 
   @override
-  Future<void> getAllproperties() {
+  Future<List<Property>> getAllproperties() {
     return _$getAllpropertiesAsyncAction.run(() => super.getAllproperties());
   }
 

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
+import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/controllers/search_controller.dart';
 
 class SearchButton extends StatelessWidget {
   final searchController = GetIt.I.get<SearchController>();
+  final pageController = GetIt.I.get<CurrentPageController>();
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () => searchController.showData(),
+        onTap: () => pageController.changePage(4),
         child: Container(
           height: 60,
           width: MediaQuery.of(context).size.width * 0.6,
