@@ -7,13 +7,19 @@ import 'package:site_lage/controllers/search_controller.dart';
 class SearchButton extends StatelessWidget {
   final searchController = GetIt.I.get<SearchController>();
   final pageController = GetIt.I.get<CurrentPageController>();
+
+  final double size;
+  final double percentSize;
+
+  SearchButton({Key key, @required this.size, @required this.percentSize})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () => pageController.changePage(4),
         child: Container(
-          height: 60,
-          width: MediaQuery.of(context).size.width * 0.6,
+          height: size,
+         width: MediaQuery.of(context).size.width * percentSize,
           padding: EdgeInsets.only(left: 10),
           decoration: BoxDecoration(
               color: LageColors.yellow,
@@ -21,7 +27,7 @@ class SearchButton extends StatelessWidget {
           child: Center(
             child: Text(
               'BUSCAR',
-              style: TextStyle(fontWeight: FontWeight.w800, fontSize: 25),
+              style: TextStyle(fontWeight: FontWeight.w800, fontSize: size*0.4),
             ),
           ),
         ));

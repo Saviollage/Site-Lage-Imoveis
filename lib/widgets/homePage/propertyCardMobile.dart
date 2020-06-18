@@ -4,18 +4,18 @@ import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/models/property.dart';
 
-class PropertyCard extends StatelessWidget {
+class PropertyCardMobile extends StatelessWidget {
   final pageController = GetIt.I.get<CurrentPageController>();
   final Property property;
 
-  PropertyCard({Key key, this.property});
+  PropertyCardMobile({Key key, this.property});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      width: 350,
-      height: 300,
+      margin: EdgeInsets.symmetric(horizontal: 5),
+      width: 200,
+      height: 200,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -30,38 +30,36 @@ class PropertyCard extends StatelessWidget {
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          height: 80,
+          height: 70,
           decoration: BoxDecoration(
             color: Colors.black.withOpacity(0.7),
             borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(10),
                 bottomLeft: Radius.circular(10)),
           ),
-          child: Center(
-            child: ListTile(
-              title: Text(
-                property.title,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text(
-                property.address,
-                style: TextStyle(color: LageColors.yellow, fontSize: 20),
-              ),
-              trailing: Text(
-                property.forSale ? "Venda" : "Aluguel",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontStyle: FontStyle.italic),
-              ),
-              onTap: () {
-                pageController.setProperty(property);
-                pageController.changePage(5);
-              },
+          child: ListTile(
+            title: Text(
+              property.title,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
             ),
+            subtitle: Text(
+              property.address,
+              style: TextStyle(color: LageColors.yellow, fontSize: 10),
+            ),
+            trailing: Text(
+              property.forSale ? "Venda" : "Aluguel",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontStyle: FontStyle.italic),
+            ),
+            onTap: () {
+              pageController.setProperty(property);
+              pageController.changePage(5);
+            },
           ),
         ),
       ),

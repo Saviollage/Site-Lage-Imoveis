@@ -23,6 +23,9 @@ class HomePageDesktop extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SearchWidget(
+            size: 600,
+            textSize: 70,
+            percentSize: 0.6,
             number: Random().nextInt(5) + 1,
           ),
           SizedBox(
@@ -41,6 +44,7 @@ class HomePageDesktop extends StatelessWidget {
           ),
           Observer(
             builder: (context) => PropertiesList(
+              size: 300,
               properties: apiController.properties.toList(),
             ),
           ),
@@ -88,6 +92,7 @@ class HomePageDesktop extends StatelessWidget {
               ? Container()
               : Observer(
                   builder: (context) => PropertiesList(
+                    size: 300,
                     properties: apiController.properties.toList(),
                     type: "Casa",
                   ),
@@ -128,6 +133,7 @@ class HomePageDesktop extends StatelessWidget {
               ? Container()
               : Observer(
                   builder: (context) => PropertiesList(
+                    size: 300,
                     properties: apiController.properties.toList(),
                     type: "Apartamento",
                   ),
@@ -168,6 +174,7 @@ class HomePageDesktop extends StatelessWidget {
               ? Container()
               : Observer(
                   builder: (context) => PropertiesList(
+                    size: 300,
                     properties: apiController.properties.toList(),
                     type: "Sítio",
                   ),
@@ -208,6 +215,7 @@ class HomePageDesktop extends StatelessWidget {
               ? Container()
               : Observer(
                   builder: (context) => PropertiesList(
+                    size: 300,
                     properties: apiController.properties.toList(),
                     type: "Lote",
                   ),

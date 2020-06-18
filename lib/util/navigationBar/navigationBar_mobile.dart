@@ -74,13 +74,29 @@ class NavigationBarMobile extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(
-                        Icons.verified_user,
+                        Icons.insert_chart,
                         color: LageColors.yellow,
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      Text('Entrar')
+                      Text('Simuladores')
+                    ],
+                  ),
+                ),
+                new DropdownMenuItem<int>(
+                  value: 3,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.location_city,
+                        color: LageColors.yellow,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('Todos imóveis')
                     ],
                   ),
                 )

@@ -5,17 +5,26 @@ import 'package:site_lage/widgets/homePage/searchButton.dart';
 
 class SearchWidget extends StatelessWidget {
   final int number;
+  final double size;
+  final double textSize;
+  final double percentSize;
 
-  const SearchWidget({Key key, this.number}) : super(key: key);
+  const SearchWidget(
+      {Key key,
+      this.number,
+      @required this.size,
+      @required this.textSize,
+      @required this.percentSize})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600,
+      height: size,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage("images/Lage_Wpp_" + number.toString() + ".jpg"),
+          image: DecorationImage(
+        fit: BoxFit.cover,
+        image: AssetImage("images/Lage_Wpp_" + number.toString() + ".jpg"),
       )),
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 20),
@@ -26,23 +35,30 @@ class SearchWidget extends StatelessWidget {
               Center(
                 child: Text(
                   "Faça sua busca online",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 70,
+                      fontSize: textSize,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Column(
                 children: [
-                  SearchBar(),
+                  SearchBar(
+                    size: size * 0.1,
+                    percentSize: percentSize,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  DropdownButtons(),
+                  DropdownButtons(
+                    size: size * 0.1,
+                    percentSize: percentSize,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  SearchButton()
+                  SearchButton(size: size * 0.1, percentSize: percentSize)
                 ],
               )
             ],
