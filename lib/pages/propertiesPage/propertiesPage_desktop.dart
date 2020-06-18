@@ -14,7 +14,11 @@ class PropertiesPageDesktop extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        PropertiesTitleWidget(),
+        PropertiesTitleWidget(
+          size: 600,
+            textSize: 70,
+            percentSize: 0.6,
+        ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
           child: Observer(
@@ -28,7 +32,9 @@ class PropertiesPageDesktop extends StatelessWidget {
                 property:searchController.filteredList.elementAt(index),
               ),
             ):
-            NotFoundWidget(),
+            NotFoundWidget(
+              size: 300,
+            ),
           ),
         )
       ],

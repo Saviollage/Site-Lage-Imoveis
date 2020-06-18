@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:site_lage/pages/propertiesPage/propertiesPage_desktop.dart';
-import 'package:site_lage/pages/propertiesPage/propertyPage_mobile.dart';
+import 'package:site_lage/pages/propertiesPage/propertiesPage_mobile.dart';
 
 class PropertiesPage extends StatelessWidget {
   @override

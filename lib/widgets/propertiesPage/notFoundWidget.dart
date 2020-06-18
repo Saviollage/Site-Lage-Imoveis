@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:site_lage/components/colors.dart';
 
 class NotFoundWidget extends StatelessWidget {
+  final double size;
+
+  const NotFoundWidget({Key key, @required this.size}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,12 +13,10 @@ class NotFoundWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 300,
+            height: size,
             decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage("images/House.png"))
-            ),
+                image: DecorationImage(image: AssetImage("images/House.png"))),
           ),
-
           ListTile(
             enabled: false,
             title: Text(
@@ -32,7 +33,7 @@ class NotFoundWidget extends StatelessWidget {
               style: TextStyle(
                   color: LageColors.yellow,
                   fontWeight: FontWeight.bold,
-                  fontSize: 25),
+                  fontSize: size == 300 ? 25 : 15),
             ),
           ),
         ],

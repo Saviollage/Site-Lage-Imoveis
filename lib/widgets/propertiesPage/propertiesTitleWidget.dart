@@ -4,10 +4,21 @@ import 'package:site_lage/widgets/homePage/searchBar.dart';
 import 'package:site_lage/widgets/homePage/searchButton.dart';
 
 class PropertiesTitleWidget extends StatelessWidget {
+  final double size;
+  final double textSize;
+  final double percentSize;
+
+  const PropertiesTitleWidget(
+      {Key key,
+      @required this.size,
+      @required this.textSize,
+      @required this.percentSize})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 600,
+        height: size,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -17,29 +28,37 @@ class PropertiesTitleWidget extends StatelessWidget {
         child: Container(
           color: Colors.black.withOpacity(0.8),
           child: Column(
-            
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Center(
                 child: Text(
                   "Todos os imóveis",
                   style: TextStyle(
-                      fontSize: 70,
+                      fontSize: textSize,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Column(
                 children: [
-                  SearchBar(),
+                  SearchBar(
+                    size: size * 0.1,
+                    percentSize: percentSize,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  DropdownButtons(),
+                  DropdownButtons(
+                    size: size * 0.1,
+                    percentSize: percentSize,
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  SearchButton()
+                  SearchButton(
+                    size: size * 0.1,
+                    percentSize: percentSize,
+                  )
                 ],
               )
             ],

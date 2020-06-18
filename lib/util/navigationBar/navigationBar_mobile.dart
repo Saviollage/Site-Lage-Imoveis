@@ -85,7 +85,7 @@ class NavigationBarMobile extends StatelessWidget {
                   ),
                 ),
                 new DropdownMenuItem<int>(
-                  value: 3,
+                  value: 4,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
