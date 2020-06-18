@@ -9,6 +9,12 @@ import 'package:site_lage/widgets/contactPage/textBar.dart';
 
 class DataWidget extends StatelessWidget {
   final emailController = GetIt.I.get<EmailController>();
+
+  final double percentSize;
+  final double fontSize;
+
+  DataWidget({Key key, @required this.percentSize, @required this.fontSize})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,44 +26,53 @@ class DataWidget extends StatelessWidget {
           title: Text(
             "Lage Imóveis",
             style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 40),
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: fontSize),
           ),
           subtitle: Text(
             "CRECI MG 1915",
             style: TextStyle(
                 color: LageColors.yellow,
                 fontWeight: FontWeight.bold,
-                fontSize: 35),
+                fontSize: fontSize * 0.8),
           ),
         ),
-        
         Container(
           height: 1,
           padding: EdgeInsets.symmetric(horizontal: 20),
           margin: EdgeInsets.symmetric(horizontal: 20),
-          width: MediaQuery.of(context).size.width * 0.4,
+          width: MediaQuery.of(context).size.width * percentSize,
           color: Colors.grey,
         ),
         ListTile(
           enabled: false,
           title: Text(
             "Alguma dúvida? Nos envie um email!",
-            style: TextStyle(color: Colors.black, fontSize: 18),
+            style: TextStyle(color: Colors.black, fontSize: fontSize*0.5),
           ),
         ),
-        NameBar(),
+        NameBar(
+          percentSize: percentSize,
+        ),
         SizedBox(
           height: 10,
         ),
-        SubjectBar(),
+        SubjectBar(
+          percentSize: percentSize,
+        ),
         SizedBox(
           height: 10,
         ),
-        TextBar(),
+        TextBar(
+          percentSize: percentSize,
+        ),
         SizedBox(
           height: 10,
         ),
-        SubmitButton()
+        SubmitButton(
+          percentSize: percentSize,
+        )
       ],
     ));
   }

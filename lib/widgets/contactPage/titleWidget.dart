@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ContactTitleWidget extends StatelessWidget {
+
+  final double size;
+  final double textSize;
+
+  const ContactTitleWidget({Key key, this.size, this.textSize}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 600,
+        height: size,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -17,7 +23,7 @@ class ContactTitleWidget extends StatelessWidget {
             child: Text(
               "Contato",
               style: TextStyle(
-                  fontSize: 70,
+                  fontSize: textSize,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),

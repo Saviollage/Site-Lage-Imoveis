@@ -9,7 +9,10 @@ class ContactPageDesktop extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        ContactTitleWidget(),
+        ContactTitleWidget(
+          size: 600,
+          textSize: 70,
+        ),
         Container(
             height: 600,
             width: MediaQuery.of(context).size.width,
@@ -18,9 +21,14 @@ class ContactPageDesktop extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                MapWidget(),
+                MapWidget(
+                  size: 0.35,
+                ),
                 Expanded(
-                  child: DataWidget(),
+                  child: DataWidget(
+                    percentSize: 0.4,
+                    fontSize: 40,
+                  ),
                 ),
               ],
             ))

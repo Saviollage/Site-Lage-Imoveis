@@ -6,12 +6,16 @@ import 'package:site_lage/controllers/email_controller.dart';
 class SubmitButton extends StatelessWidget {
   final emailController = GetIt.I.get<EmailController>();
 
+  final double percentSize;
+
+  SubmitButton({Key key, @required this.percentSize}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
         height: 50,
-        width: MediaQuery.of(context).size.width * 0.4,
+        width: MediaQuery.of(context).size.width * percentSize,
         padding: EdgeInsets.only(left: 10),
         margin: EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
