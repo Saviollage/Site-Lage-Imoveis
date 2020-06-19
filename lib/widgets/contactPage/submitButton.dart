@@ -36,7 +36,47 @@ class SubmitButton extends StatelessWidget {
           ),
         ),
       ),
-      onTap: () => emailController.submit(),
+      onTap: () => emailController.validateAll().then((value) {
+        if (value) {
+          showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (_) => AlertDialog(
+              content: ListTile(
+                leading: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(LageColors.yellow),
+                ),
+                title: Text("Aguarde"),
+                subtitle: Text('Enviando email'),
+              ),
+            ),
+          );
+          emailController.submit().then((value) {
+            Navigator.pop(context);
+            showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (_) {
+                  Future.delayed(Duration(seconds: 3), () {
+                    Navigator.pop(context);
+                  });
+
+                  return AlertDialog(
+                    content: ListTile(
+                        leading: Icon(
+                          value ? Icons.check_circle : Icons.cancel,
+                          color: LageColors.yellow,
+                          size: 40,
+                        ),
+                        title: value ? Text("Sucesso!") : Text("Ops!"),
+                        subtitle: value
+                            ? Text('Email enviado com sucesso!')
+                            : Text("ocorreu um erro, tente novamente")),
+                  );
+                });
+          });
+        }
+      }),
     );
   }
 }

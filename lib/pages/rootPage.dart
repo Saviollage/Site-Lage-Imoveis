@@ -7,7 +7,6 @@ import 'package:site_lage/controllers/search_controller.dart';
 import 'package:site_lage/pages/aboutUsPage.dart';
 import 'package:site_lage/pages/contactPage.dart';
 import 'package:site_lage/pages/homePage.dart';
-import 'package:site_lage/pages/loginPage.dart';
 import 'package:site_lage/pages/properiesPage.dart';
 import 'package:site_lage/pages/propertyPage.dart';
 import 'package:site_lage/pages/simulationPage.dart';

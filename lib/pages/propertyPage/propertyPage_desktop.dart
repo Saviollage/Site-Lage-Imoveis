@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:site_lage/models/property.dart';
-import 'package:site_lage/util/foorter/footer.dart';
-import 'package:site_lage/util/navigationBar/navigationBar.dart';
 import 'package:site_lage/widgets/propertyPage/propertyContact.dart';
 import 'package:site_lage/widgets/propertyPage/propertyDetails.dart';
 import 'package:site_lage/widgets/propertyPage/propertyPhotos.dart';

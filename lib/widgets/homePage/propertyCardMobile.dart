@@ -58,11 +58,12 @@ class PropertyCardMobile extends StatelessWidget {
                   fontStyle: FontStyle.italic),
             ),
             onTap: () {
-              scrollController.animateTo(0,
-                    duration: new Duration(milliseconds: 500),
-                    curve: Curves.bounceIn);
+              
               pageController.setProperty(property);
               pageController.changePage(5);
+              scrollController.animateTo(0,
+                    duration: new Duration(milliseconds: 500),
+                    curve: Curves.linear);
             },
           ),
         ),

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/models/property.dart';
-import 'package:site_lage/widgets/contactPage/nameBar.dart';
-import 'package:site_lage/widgets/contactPage/subjectBar.dart';
-import 'package:site_lage/widgets/contactPage/submitButton.dart';
-import 'package:site_lage/widgets/contactPage/textBar.dart';
 import 'package:site_lage/widgets/propertyPage/propertyTitle.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class PropertyDetails extends StatelessWidget {
   final Property property;

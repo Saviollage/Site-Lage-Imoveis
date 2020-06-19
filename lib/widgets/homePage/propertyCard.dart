@@ -59,11 +59,11 @@ class PropertyCard extends StatelessWidget {
                     fontStyle: FontStyle.italic),
               ),
               onTap: () {
+                pageController.setProperty(property);
+                pageController.changePage(5);
                 scrollController.animateTo(0,
                     duration: new Duration(milliseconds: 500),
                     curve: Curves.linear);
-                pageController.setProperty(property);
-                pageController.changePage(5);
               },
             ),
           ),

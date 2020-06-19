@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:site_lage/pages/homePage/homePage_desktop.dart';
 import 'package:site_lage/pages/homePage/homePage_mobile.dart';

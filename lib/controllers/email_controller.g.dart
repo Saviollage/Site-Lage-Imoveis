@@ -9,6 +9,14 @@ part of 'email_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EmailController on _EmailControllerBase, Store {
+  Computed<bool> _$canContinueComputed;
+
+  @override
+  bool get canContinue =>
+      (_$canContinueComputed ??= Computed<bool>(() => super.canContinue,
+              name: '_EmailControllerBase.canContinue'))
+          .value;
+
   final _$nameAtom = Atom(name: '_EmailControllerBase.name');
 
   @override
@@ -54,6 +62,13 @@ mixin _$EmailController on _EmailControllerBase, Store {
     });
   }
 
+  final _$submitAsyncAction = AsyncAction('_EmailControllerBase.submit');
+
+  @override
+  Future<bool> submit() {
+    return _$submitAsyncAction.run(() => super.submit());
+  }
+
   final _$_EmailControllerBaseActionController =
       ActionController(name: '_EmailControllerBase');
 
@@ -91,17 +106,6 @@ mixin _$EmailController on _EmailControllerBase, Store {
   }
 
   @override
-  void submit() {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
-        name: '_EmailControllerBase.submit');
-    try {
-      return super.submit();
-    } finally {
-      _$_EmailControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void reset() {
     final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
         name: '_EmailControllerBase.reset');
@@ -113,11 +117,110 @@ mixin _$EmailController on _EmailControllerBase, Store {
   }
 
   @override
+  void validateName(String value) {
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
+        name: '_EmailControllerBase.validateName');
+    try {
+      return super.validateName(value);
+    } finally {
+      _$_EmailControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void validateSubject(String value) {
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
+        name: '_EmailControllerBase.validateSubject');
+    try {
+      return super.validateSubject(value);
+    } finally {
+      _$_EmailControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void validateText(String value) {
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
+        name: '_EmailControllerBase.validateText');
+    try {
+      return super.validateText(value);
+    } finally {
+      _$_EmailControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 name: ${name},
 subject: ${subject},
-text: ${text}
+text: ${text},
+canContinue: ${canContinue}
+    ''';
+  }
+}
+
+mixin _$FormErrorState on _FormErrorStateBase, Store {
+  Computed<bool> _$hasErrorsComputed;
+
+  @override
+  bool get hasErrors =>
+      (_$hasErrorsComputed ??= Computed<bool>(() => super.hasErrors,
+              name: '_FormErrorStateBase.hasErrors'))
+          .value;
+
+  final _$nameAtom = Atom(name: '_FormErrorStateBase.name');
+
+  @override
+  String get name {
+    _$nameAtom.reportRead();
+    return super.name;
+  }
+
+  @override
+  set name(String value) {
+    _$nameAtom.reportWrite(value, super.name, () {
+      super.name = value;
+    });
+  }
+
+  final _$subjectAtom = Atom(name: '_FormErrorStateBase.subject');
+
+  @override
+  String get subject {
+    _$subjectAtom.reportRead();
+    return super.subject;
+  }
+
+  @override
+  set subject(String value) {
+    _$subjectAtom.reportWrite(value, super.subject, () {
+      super.subject = value;
+    });
+  }
+
+  final _$textAtom = Atom(name: '_FormErrorStateBase.text');
+
+  @override
+  String get text {
+    _$textAtom.reportRead();
+    return super.text;
+  }
+
+  @override
+  set text(String value) {
+    _$textAtom.reportWrite(value, super.text, () {
+      super.text = value;
+    });
+  }
+
+  @override
+  String toString() {
+    return '''
+name: ${name},
+subject: ${subject},
+text: ${text},
+hasErrors: ${hasErrors}
     ''';
   }
 }
