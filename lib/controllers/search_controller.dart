@@ -14,12 +14,20 @@ abstract class _SearchControllerBase with Store {
   @observable
   ObservableList propertyTypes = [
     "Todos",
-    "Casa",
     "Apartamento",
-    "Sítio",
-    "Lote",
+    "Casa",
+    "Casa Germinada",
     "Chácara",
-    "Outros"
+    "Cobertura",
+    "Fazenda",
+    "Galpão",
+    "Loja",
+    "Lote",
+    "Prédio",
+    "Quitinete",
+    "Sala",
+    "Sítio",
+    "Terreno"
   ].asObservable();
 
   @observable

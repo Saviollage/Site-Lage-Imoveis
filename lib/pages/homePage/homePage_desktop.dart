@@ -220,6 +220,7 @@ class HomePageDesktop extends StatelessWidget {
                     type: "Lote",
                   ),
                 ),
+                
           SizedBox(height: 30)
         ],
       ),

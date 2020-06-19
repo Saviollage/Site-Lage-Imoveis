@@ -44,7 +44,7 @@ class PropertyCardTile extends StatelessWidget {
           trailing: Text(
             property.forSale ? "Venda" : "Aluguel",
             style: TextStyle(
-                color: Colors.white, fontSize: 10, fontStyle: FontStyle.italic),
+                color: Colors.grey, fontSize: 10, fontStyle: FontStyle.italic),
           ),
           onTap: () {
             
