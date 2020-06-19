@@ -16,7 +16,7 @@ abstract class _SearchControllerBase with Store {
     "Todos",
     "Apartamento",
     "Casa",
-    "Casa Germinada",
+    "Casa Geminada",
     "Chácara",
     "Cobertura",
     "Fazenda",
