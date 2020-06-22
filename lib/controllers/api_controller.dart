@@ -31,7 +31,9 @@ abstract class _ApiControllerBase with Store {
         properties = new List.generate(
                 data.length, (item) => Property.fromJson(data[item]))
             .asObservable();
+        return properties;
       }
+      return null;
     } catch (error, stacktrace) {
       print("Erro ao carregar lista" + stacktrace.toString());
       return null;

@@ -30,6 +30,9 @@ abstract class _SearchControllerBase with Store {
     "Terreno"
   ].asObservable();
 
+  @computed
+  get getPropertyTypes => propertyTypes.toList();
+
   @observable
   String method = "Aluguel e Venda";
 

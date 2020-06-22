@@ -46,16 +46,24 @@ class HomePageState extends State<HomePage> {
               children: [
                 NavigationBar(),
                 ConstrainedBox(
-                  constraints: BoxConstraints(
-                      minHeight: MediaQuery.of(context).size.height * 0.85),
-                  child: Container(
-                      alignment: Alignment.topCenter,
-                      child: ScreenTypeLayout(
-                        desktop: HomePageDesktop(),
-                        tablet: HomePageDesktop(),
-                        mobile: HomePageMobile(),
-                      )),
-                ),
+                    constraints: BoxConstraints(
+                        minHeight: MediaQuery.of(context).size.height * 0.85),
+                    child: FutureBuilder(
+                      future: apiController.getAllproperties(),
+                      builder: (context, snapshot) => Container(
+                          alignment: Alignment.topCenter,
+                          child: ScreenTypeLayout(
+                            desktop: HomePageDesktop(
+                              snapshot: snapshot,
+                            ),
+                            tablet: HomePageDesktop(
+                              snapshot: snapshot,
+                            ),
+                            mobile: HomePageMobile(
+                              snapshot: snapshot,
+                            ),
+                          )),
+                    )),
                 Footer()
               ],
             ),

@@ -6,9 +6,14 @@ class PropertiesList extends StatelessWidget {
   final List properties;
   final String type;
   final double size;
+  final int limit;
 
   const PropertiesList(
-      {Key key, @required this.properties, this.type, @required this.size})
+      {Key key,
+      @required this.properties,
+      this.type,
+      @required this.size,
+      this.limit})
       : super(key: key);
 
   @override
@@ -24,25 +29,22 @@ class PropertiesList extends StatelessWidget {
                     .toList()
                 : properties.where((element) => element.type == type).toList();
 
-    return properties == null
-        ? Container(
-            height: size,
-          )
-        : Container(
-            height: size,
-            child: ListView.builder(
-              padding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
-              scrollDirection: Axis.horizontal,
-              itemCount:
-                  filteredProperties == null ? 0 : filteredProperties.length,
-              itemBuilder: (context, index) => size == 300
-                  ? PropertyCard(
-                      property: filteredProperties[index],
-                    )
-                  : PropertyCardMobile(
-                      property: filteredProperties[index],
-                    ),
-            ),
-          );
+    return Container(
+      height: size,
+      child: ListView.builder(
+        padding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
+        scrollDirection: Axis.horizontal,
+        itemCount: filteredProperties == null
+            ? 0
+            : limit == null ? filteredProperties.length : limit,
+        itemBuilder: (context, index) => size == 300
+            ? PropertyCard(
+                property: filteredProperties[index],
+              )
+            : PropertyCardMobile(
+                property: filteredProperties[index],
+              ),
+      ),
+    );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:site_lage/components/colors.dart';
@@ -10,7 +9,6 @@ import 'package:site_lage/util/foorter/footer.dart';
 import 'package:site_lage/util/navigationBar/navigationBar.dart';
 import 'package:site_lage/controllers/api_controller.dart';
 import 'package:site_lage/widgets/propertiesPage/notFoundWidget.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class PropertyPage extends StatefulWidget {
   static const route = '/property';
@@ -59,82 +57,45 @@ class PropertyPageState extends State<PropertyPage> {
                   constraints: BoxConstraints(
                       minHeight: MediaQuery.of(context).size.height * 0.85),
                   child: FutureBuilder(
-                      future: apiController.getpropertyDetail(widget.id),
-                      builder: (context, snapshot) =>
-                          snapshot.connectionState == ConnectionState.waiting
-                              ? Container(
-                                  color: Colors.white,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      CircularProgressIndicator(
-                                        valueColor: AlwaysStoppedAnimation(
-                                            LageColors.yellow),
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Text('Aguarde, por favor')
-                                    ],
-                                  ))
-                              : !snapshot.hasData
-                                  ? Container(
-                                      color: Colors.white,
-                                      child: NotFoundWidget(
-                                          size: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.4))
-                                  : Container(
-                                      alignment: Alignment.topCenter,
-                                      child: ScreenTypeLayout(
-                                        desktop: PropertyPageDesktop(
-                                          property: apiController.property,
-                                        ),
-                                        tablet: PropertyPageDesktop(
-                                          property: apiController.property,
-                                        ),
-                                        mobile: PropertyPageMobile(
-                                          property: apiController.property,
-                                        ),
-                                      ),
-                                    )),
-                  // builder: (context) => apiController.loading
-                  //     ? Container(
-                  //         color: Colors.white,
-                  //         child: Column(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: [
-                  //             CircularProgressIndicator(
-                  //               valueColor: AlwaysStoppedAnimation(
-                  //                   LageColors.yellow),
-                  //             ),
-                  //             SizedBox(
-                  //               height: 20,
-                  //             ),
-                  //             Text('Aguarde, por favor')
-                  //           ],
-                  //         ))
-                  //     : apiController.property == null
-                  //         ? Container(
-                  //             color: Colors.white,
-                  //             child: NotFoundWidget(
-                  //                 size: MediaQuery.of(context).size.width *
-                  //                     0.4))
-                  //         : Container(
-                  //             alignment: Alignment.topCenter,
-                  //             child: ScreenTypeLayout(
-                  //               desktop: PropertyPageDesktop(
-                  //                 property: apiController.property,
-                  //               ),
-                  //               tablet: PropertyPageDesktop(
-                  //                 property: apiController.property,
-                  //               ),
-                  //               mobile: PropertyPageMobile(
-                  //                 property: apiController.property,
-                  //               ),
-                  //             ),
-                  //           ),
+                    future: apiController.getpropertyDetail(widget.id),
+                    builder: (context, snapshot) => snapshot.connectionState ==
+                            ConnectionState.waiting
+                        ? Container(
+                            color: Colors.white,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircularProgressIndicator(
+                                  valueColor:
+                                      AlwaysStoppedAnimation(LageColors.yellow),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text('Aguarde, por favor')
+                              ],
+                            ))
+                        : !snapshot.hasData
+                            ? Container(
+                                color: Colors.white,
+                                child: NotFoundWidget(
+                                    size: MediaQuery.of(context).size.width *
+                                        0.4))
+                            : Container(
+                                alignment: Alignment.topCenter,
+                                child: ScreenTypeLayout(
+                                  desktop: PropertyPageDesktop(
+                                    property: apiController.property,
+                                  ),
+                                  tablet: PropertyPageDesktop(
+                                    property: apiController.property,
+                                  ),
+                                  mobile: PropertyPageMobile(
+                                    property: apiController.property,
+                                  ),
+                                ),
+                              ),
+                  ),
                 ),
                 Footer()
               ],

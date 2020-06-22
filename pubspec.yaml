@@ -33,6 +33,7 @@ dependencies:
   cached_network_image:
   google_maps:
   url_launcher:
+  skeleton_text:
   
 
 dev_dependencies:

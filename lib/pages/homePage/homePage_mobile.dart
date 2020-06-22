@@ -1,24 +1,25 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
-import 'package:site_lage/controllers/api_controller.dart';
 import 'package:site_lage/controllers/search_controller.dart';
 import 'package:site_lage/pages/properiesPage.dart';
 import 'package:site_lage/widgets/homePage/propertiesList.dart';
+import 'package:site_lage/widgets/homePage/propertiesListLoading.dart';
 import 'package:site_lage/widgets/homePage/searchWidget.dart';
 
 class HomePageMobile extends StatelessWidget {
-  final apiController = GetIt.I.get<ApiController>();
   final searchController = GetIt.I.get<SearchController>();
+
+  final AsyncSnapshot snapshot;
+
+  HomePageMobile({Key key, @required this.snapshot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Observer(
-      builder: (_) => Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SearchWidget(
@@ -41,12 +42,12 @@ class HomePageMobile extends StatelessWidget {
                   color: Colors.black),
             ),
           ),
-          Observer(
-            builder: (context) => PropertiesList(
-              size: 200,
-              properties: apiController.properties.toList(),
-            ),
-          ),
+          (snapshot.connectionState == ConnectionState.waiting
+              ? PropertiesListLoading(size: 200)
+              : PropertiesList(
+                  size: 200,
+                  properties: snapshot.data,
+                )),
           Container(
             margin: EdgeInsets.symmetric(vertical: 25),
             width: MediaQuery.of(context).size.width,
@@ -55,10 +56,11 @@ class HomePageMobile extends StatelessWidget {
               fit: BoxFit.fitWidth,
             ),
           ),
-          new List.from(apiController.properties)
-                      .where((element) => element.type == "Casa")
-                      .length ==
-                  0
+          snapshot.hasData &&
+                  List.from(snapshot.data)
+                          .where((element) => element.type == "Casa")
+                          .length ==
+                      0
               ? Container()
               : ListTile(
                   enabled: false,
@@ -84,22 +86,24 @@ class HomePageMobile extends StatelessWidget {
                         style: TextStyle(color: LageColors.yellow),
                       )),
                 ),
-          new List.from(apiController.properties)
-                      .where((element) => element.type == "Casa")
-                      .length ==
-                  0
+          snapshot.hasData &&
+                  List.from(snapshot.data)
+                          .where((element) => element.type == "Casa")
+                          .length ==
+                      0
               ? Container()
-              : Observer(
-                  builder: (context) => PropertiesList(
-                    size: 200,
-                    properties: apiController.properties.toList(),
-                    type: "Casa",
-                  ),
-                ),
-          new List.from(apiController.properties)
-                      .where((element) => element.type == "Apartamento")
-                      .length ==
-                  0
+              : (snapshot.connectionState == ConnectionState.waiting
+                  ? PropertiesListLoading(size: 300)
+                  : PropertiesList(
+                      size: 200,
+                      properties: snapshot.data.toList(),
+                      type: "Casa",
+                    )),
+          snapshot.hasData &&
+                  List.from(snapshot.data)
+                          .where((element) => element.type == "Apartamento")
+                          .length ==
+                      0
               ? Container()
               : ListTile(
                   enabled: false,
@@ -125,22 +129,24 @@ class HomePageMobile extends StatelessWidget {
                         style: TextStyle(color: LageColors.yellow),
                       )),
                 ),
-          new List.from(apiController.properties)
-                      .where((element) => element.type == "Apartamento")
-                      .length ==
-                  0
+          snapshot.hasData &&
+                  List.from(snapshot.data)
+                          .where((element) => element.type == "Apartamento")
+                          .length ==
+                      0
               ? Container()
-              : Observer(
-                  builder: (context) => PropertiesList(
-                    size: 200,
-                    properties: apiController.properties.toList(),
-                    type: "Apartamento",
-                  ),
-                ),
-          new List.from(apiController.properties)
-                      .where((element) => element.type == "Sítio")
-                      .length ==
-                  0
+              : (snapshot.connectionState == ConnectionState.waiting
+                  ? PropertiesListLoading(size: 300)
+                  : PropertiesList(
+                      size: 200,
+                      properties: snapshot.data.toList(),
+                      type: "Apartamento",
+                    )),
+          snapshot.hasData &&
+                  List.from(snapshot.data)
+                          .where((element) => element.type == "Sítio")
+                          .length ==
+                      0
               ? Container()
               : ListTile(
                   enabled: false,
@@ -166,22 +172,24 @@ class HomePageMobile extends StatelessWidget {
                         style: TextStyle(color: LageColors.yellow),
                       )),
                 ),
-          new List.from(apiController.properties)
-                      .where((element) => element.type == "Sítio")
-                      .length ==
-                  0
+          snapshot.hasData &&
+                  List.from(snapshot.data)
+                          .where((element) => element.type == "Sítio")
+                          .length ==
+                      0
               ? Container()
-              : Observer(
-                  builder: (context) => PropertiesList(
-                    size: 200,
-                    properties: apiController.properties.toList(),
-                    type: "Sítio",
-                  ),
-                ),
-          new List.from(apiController.properties)
-                      .where((element) => element.type == "Lote")
-                      .length ==
-                  0
+              : (snapshot.connectionState == ConnectionState.waiting
+                  ? PropertiesListLoading(size: 300)
+                  : PropertiesList(
+                      size: 200,
+                      properties: snapshot.data.toList(),
+                      type: "Sítio",
+                    )),
+          snapshot.hasData &&
+                  List.from(snapshot.data)
+                          .where((element) => element.type == "Lote")
+                          .length ==
+                      0
               ? Container()
               : ListTile(
                   enabled: false,
@@ -207,21 +215,22 @@ class HomePageMobile extends StatelessWidget {
                         style: TextStyle(color: LageColors.yellow),
                       )),
                 ),
-          new List.from(apiController.properties)
-                      .where((element) => element.type == "Lote")
-                      .length ==
-                  0
+          snapshot.hasData &&
+                  List.from(snapshot.data)
+                          .where((element) => element.type == "Lote")
+                          .length ==
+                      0
               ? Container()
-              : Observer(
-                  builder: (context) => PropertiesList(
-                    size: 200,
-                    properties: apiController.properties.toList(),
-                    type: "Lote",
-                  ),
-                ),
+              : (snapshot.connectionState == ConnectionState.waiting
+                  ? PropertiesListLoading(size: 300)
+                  : PropertiesList(
+                      size: 200,
+                      properties: snapshot.data.toList(),
+                      type: "Lote",
+                    )),
           SizedBox(height: 30)
         ],
       ),
-    ));
+    );
   }
 }
