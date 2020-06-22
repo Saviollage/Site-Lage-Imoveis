@@ -3,18 +3,16 @@ import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:site_lage/controllers/api_controller.dart';
 import 'package:site_lage/controllers/email_controller.dart';
-import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/controllers/search_controller.dart';
-import 'package:site_lage/pages/rootPage.dart';
+import 'package:site_lage/pages/homePage.dart';
+import 'package:site_lage/router/config.dart';
 
 void main() {
   runApp(MyApp());
   GetIt getIt = GetIt.I;
-  getIt.registerSingleton(CurrentPageController());
   getIt.registerSingleton(ApiController());
   getIt.registerSingleton(SearchController());
   getIt.registerSingleton(EmailController());
-  getIt.registerSingleton(ScrollController());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,8 +25,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
       ),
-      home: RootPage(),
+      initialRoute: HomePage.route,
+      onGenerateRoute: RouteConfiguration.onGenerateRoute,
     );
   }
 }
- 

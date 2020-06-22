@@ -13,59 +13,63 @@ mixin _$EmailController on _EmailControllerBase, Store {
 
   @override
   bool get canContinue =>
-      (_$canContinueComputed ??= Computed<bool>(() => super.canContinue,
-              name: '_EmailControllerBase.canContinue'))
-          .value;
+      (_$canContinueComputed ??= Computed<bool>(() => super.canContinue)).value;
 
   final _$nameAtom = Atom(name: '_EmailControllerBase.name');
 
   @override
   String get name {
-    _$nameAtom.reportRead();
+    _$nameAtom.context.enforceReadPolicy(_$nameAtom);
+    _$nameAtom.reportObserved();
     return super.name;
   }
 
   @override
   set name(String value) {
-    _$nameAtom.reportWrite(value, super.name, () {
+    _$nameAtom.context.conditionallyRunInAction(() {
       super.name = value;
-    });
+      _$nameAtom.reportChanged();
+    }, _$nameAtom, name: '${_$nameAtom.name}_set');
   }
 
   final _$subjectAtom = Atom(name: '_EmailControllerBase.subject');
 
   @override
   String get subject {
-    _$subjectAtom.reportRead();
+    _$subjectAtom.context.enforceReadPolicy(_$subjectAtom);
+    _$subjectAtom.reportObserved();
     return super.subject;
   }
 
   @override
   set subject(String value) {
-    _$subjectAtom.reportWrite(value, super.subject, () {
+    _$subjectAtom.context.conditionallyRunInAction(() {
       super.subject = value;
-    });
+      _$subjectAtom.reportChanged();
+    }, _$subjectAtom, name: '${_$subjectAtom.name}_set');
   }
 
   final _$textAtom = Atom(name: '_EmailControllerBase.text');
 
   @override
   String get text {
-    _$textAtom.reportRead();
+    _$textAtom.context.enforceReadPolicy(_$textAtom);
+    _$textAtom.reportObserved();
     return super.text;
   }
 
   @override
   set text(String value) {
-    _$textAtom.reportWrite(value, super.text, () {
+    _$textAtom.context.conditionallyRunInAction(() {
       super.text = value;
-    });
+      _$textAtom.reportChanged();
+    }, _$textAtom, name: '${_$textAtom.name}_set');
   }
 
-  final _$submitAsyncAction = AsyncAction('_EmailControllerBase.submit');
+  final _$submitAsyncAction = AsyncAction('submit');
 
   @override
-  Future<bool> submit() {
+  Future submit() {
     return _$submitAsyncAction.run(() => super.submit());
   }
 
@@ -74,8 +78,7 @@ mixin _$EmailController on _EmailControllerBase, Store {
 
   @override
   void setName(String val) {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
-        name: '_EmailControllerBase.setName');
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
     try {
       return super.setName(val);
     } finally {
@@ -85,8 +88,7 @@ mixin _$EmailController on _EmailControllerBase, Store {
 
   @override
   void setSubject(String val) {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
-        name: '_EmailControllerBase.setSubject');
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
     try {
       return super.setSubject(val);
     } finally {
@@ -96,8 +98,7 @@ mixin _$EmailController on _EmailControllerBase, Store {
 
   @override
   void setText(String val) {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
-        name: '_EmailControllerBase.setText');
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
     try {
       return super.setText(val);
     } finally {
@@ -107,8 +108,7 @@ mixin _$EmailController on _EmailControllerBase, Store {
 
   @override
   void reset() {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
-        name: '_EmailControllerBase.reset');
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
     try {
       return super.reset();
     } finally {
@@ -118,8 +118,7 @@ mixin _$EmailController on _EmailControllerBase, Store {
 
   @override
   void validateName(String value) {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
-        name: '_EmailControllerBase.validateName');
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
     try {
       return super.validateName(value);
     } finally {
@@ -129,8 +128,7 @@ mixin _$EmailController on _EmailControllerBase, Store {
 
   @override
   void validateSubject(String value) {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
-        name: '_EmailControllerBase.validateSubject');
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
     try {
       return super.validateSubject(value);
     } finally {
@@ -140,23 +138,12 @@ mixin _$EmailController on _EmailControllerBase, Store {
 
   @override
   void validateText(String value) {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction(
-        name: '_EmailControllerBase.validateText');
+    final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
     try {
       return super.validateText(value);
     } finally {
       _$_EmailControllerBaseActionController.endAction(_$actionInfo);
     }
-  }
-
-  @override
-  String toString() {
-    return '''
-name: ${name},
-subject: ${subject},
-text: ${text},
-canContinue: ${canContinue}
-    ''';
   }
 }
 
@@ -165,62 +152,56 @@ mixin _$FormErrorState on _FormErrorStateBase, Store {
 
   @override
   bool get hasErrors =>
-      (_$hasErrorsComputed ??= Computed<bool>(() => super.hasErrors,
-              name: '_FormErrorStateBase.hasErrors'))
-          .value;
+      (_$hasErrorsComputed ??= Computed<bool>(() => super.hasErrors)).value;
 
   final _$nameAtom = Atom(name: '_FormErrorStateBase.name');
 
   @override
   String get name {
-    _$nameAtom.reportRead();
+    _$nameAtom.context.enforceReadPolicy(_$nameAtom);
+    _$nameAtom.reportObserved();
     return super.name;
   }
 
   @override
   set name(String value) {
-    _$nameAtom.reportWrite(value, super.name, () {
+    _$nameAtom.context.conditionallyRunInAction(() {
       super.name = value;
-    });
+      _$nameAtom.reportChanged();
+    }, _$nameAtom, name: '${_$nameAtom.name}_set');
   }
 
   final _$subjectAtom = Atom(name: '_FormErrorStateBase.subject');
 
   @override
   String get subject {
-    _$subjectAtom.reportRead();
+    _$subjectAtom.context.enforceReadPolicy(_$subjectAtom);
+    _$subjectAtom.reportObserved();
     return super.subject;
   }
 
   @override
   set subject(String value) {
-    _$subjectAtom.reportWrite(value, super.subject, () {
+    _$subjectAtom.context.conditionallyRunInAction(() {
       super.subject = value;
-    });
+      _$subjectAtom.reportChanged();
+    }, _$subjectAtom, name: '${_$subjectAtom.name}_set');
   }
 
   final _$textAtom = Atom(name: '_FormErrorStateBase.text');
 
   @override
   String get text {
-    _$textAtom.reportRead();
+    _$textAtom.context.enforceReadPolicy(_$textAtom);
+    _$textAtom.reportObserved();
     return super.text;
   }
 
   @override
   set text(String value) {
-    _$textAtom.reportWrite(value, super.text, () {
+    _$textAtom.context.conditionallyRunInAction(() {
       super.text = value;
-    });
-  }
-
-  @override
-  String toString() {
-    return '''
-name: ${name},
-subject: ${subject},
-text: ${text},
-hasErrors: ${hasErrors}
-    ''';
+      _$textAtom.reportChanged();
+    }, _$textAtom, name: '${_$textAtom.name}_set');
   }
 }

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
-import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/models/property.dart';
+import 'package:site_lage/pages/propertyPage.dart';
 
 class PropertyCard extends StatelessWidget {
-  final pageController = GetIt.I.get<CurrentPageController>();
-  final scrollController = GetIt.I.get<ScrollController>();
   final Property property;
 
   PropertyCard({Key key, this.property});
@@ -40,32 +37,26 @@ class PropertyCard extends StatelessWidget {
           ),
           child: Center(
             child: ListTile(
-              title: Text(
-                property.title,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text(
-                property.address,
-                style: TextStyle(color: LageColors.yellow, fontSize: 20),
-              ),
-              trailing: Text(
-                property.forSale ? "Venda" : "Aluguel",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontStyle: FontStyle.italic),
-              ),
-              onTap: () {
-                pageController.setProperty(property);
-                pageController.changePage(5);
-                scrollController.animateTo(0,
-                    duration: new Duration(milliseconds: 500),
-                    curve: Curves.linear);
-              },
-            ),
+                title: Text(
+                  property.title,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(
+                  property.address,
+                  style: TextStyle(color: LageColors.yellow, fontSize: 20),
+                ),
+                trailing: Text(
+                  property.forSale ? "Venda" : "Aluguel",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontStyle: FontStyle.italic),
+                ),
+                onTap: () => Navigator.of(context)
+                    .pushNamed(PropertyPage.route + '/' + property.sId)),
           ),
         ),
       ),

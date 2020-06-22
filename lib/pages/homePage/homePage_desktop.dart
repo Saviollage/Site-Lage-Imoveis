@@ -5,15 +5,13 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/controllers/api_controller.dart';
-import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/controllers/search_controller.dart';
+import 'package:site_lage/pages/properiesPage.dart';
 import 'package:site_lage/widgets/homePage/propertiesList.dart';
 import 'package:site_lage/widgets/homePage/searchWidget.dart';
 
 class HomePageDesktop extends StatelessWidget {
   final apiController = GetIt.I.get<ApiController>();
-
-  final pageController = GetIt.I.get<CurrentPageController>();
   final searchController = GetIt.I.get<SearchController>();
   @override
   Widget build(BuildContext context) {
@@ -78,7 +76,7 @@ class HomePageDesktop extends StatelessWidget {
                       splashColor: Colors.transparent,
                       onPressed: () {
                         searchController.setpropertyType("Casa");
-                        pageController.changePage(4);
+                        Navigator.of(context).pushNamed(PropertiesPage.route);
                       },
                       child: Text(
                         "Ver mais",
@@ -119,7 +117,7 @@ class HomePageDesktop extends StatelessWidget {
                       splashColor: Colors.transparent,
                       onPressed: () {
                         searchController.setpropertyType("Apartamento");
-                        pageController.changePage(4);
+                        Navigator.of(context).pushNamed(PropertiesPage.route);
                       },
                       child: Text(
                         "Ver mais",
@@ -160,7 +158,7 @@ class HomePageDesktop extends StatelessWidget {
                       splashColor: Colors.transparent,
                       onPressed: () {
                         searchController.setpropertyType("Sítio");
-                        pageController.changePage(4);
+                        Navigator.of(context).pushNamed(PropertiesPage.route);
                       },
                       child: Text(
                         "Ver mais",
@@ -201,7 +199,7 @@ class HomePageDesktop extends StatelessWidget {
                       splashColor: Colors.transparent,
                       onPressed: () {
                         searchController.setpropertyType("Lote");
-                        pageController.changePage(4);
+                        Navigator.of(context).pushNamed(PropertiesPage.route);
                       },
                       child: Text(
                         "Ver mais",

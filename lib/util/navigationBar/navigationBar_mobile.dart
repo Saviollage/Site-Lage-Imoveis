@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
-import 'package:site_lage/controllers/page_controller.dart';
+import 'package:site_lage/pages/aboutUsPage.dart';
+import 'package:site_lage/pages/contactPage.dart';
+import 'package:site_lage/pages/homePage.dart';
+import 'package:site_lage/pages/properiesPage.dart';
+import 'package:site_lage/pages/simulationPage.dart';
 import 'package:site_lage/util/navigationBar/navigationBarLogo.dart';
 
 class NavigationBarMobile extends StatelessWidget {
-  final pageController = GetIt.I.get<CurrentPageController>();
+  final pages = [
+    HomePage.route,
+    AboutUsPage.route,
+    ContactPage.route,
+    SimulationPage.route,
+    PropertiesPage.route
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +25,8 @@ class NavigationBarMobile extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          NavigationBarLogo(onPressed: () => pageController.changePage(0)),
+          NavigationBarLogo(
+              onPressed: () => Navigator.of(context).pushNamed(HomePage.route)),
           DropdownButton(
               icon: Icon(Icons.menu),
               underline: SizedBox(),
@@ -101,7 +112,8 @@ class NavigationBarMobile extends StatelessWidget {
                   ),
                 )
               ],
-              onChanged: (index) => pageController.changePage(index))
+              onChanged: (index) =>
+                  Navigator.of(context).pushNamed(pages[index]))
           //IconButton(icon: Icon(Icons.menu), onPressed: null)
         ],
       ),

@@ -13,15 +13,17 @@ mixin _$PropertyController on _PropertyControllerBase, Store {
 
   @override
   int get currentIndex {
-    _$currentIndexAtom.reportRead();
+    _$currentIndexAtom.context.enforceReadPolicy(_$currentIndexAtom);
+    _$currentIndexAtom.reportObserved();
     return super.currentIndex;
   }
 
   @override
   set currentIndex(int value) {
-    _$currentIndexAtom.reportWrite(value, super.currentIndex, () {
+    _$currentIndexAtom.context.conditionallyRunInAction(() {
       super.currentIndex = value;
-    });
+      _$currentIndexAtom.reportChanged();
+    }, _$currentIndexAtom, name: '${_$currentIndexAtom.name}_set');
   }
 
   final _$_PropertyControllerBaseActionController =
@@ -29,19 +31,12 @@ mixin _$PropertyController on _PropertyControllerBase, Store {
 
   @override
   void setIndex(int value) {
-    final _$actionInfo = _$_PropertyControllerBaseActionController.startAction(
-        name: '_PropertyControllerBase.setIndex');
+    final _$actionInfo =
+        _$_PropertyControllerBaseActionController.startAction();
     try {
       return super.setIndex(value);
     } finally {
       _$_PropertyControllerBaseActionController.endAction(_$actionInfo);
     }
-  }
-
-  @override
-  String toString() {
-    return '''
-currentIndex: ${currentIndex}
-    ''';
   }
 }

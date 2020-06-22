@@ -13,107 +13,117 @@ mixin _$SearchController on _SearchControllerBase, Store {
 
   @override
   dynamic get filteredList =>
-      (_$filteredListComputed ??= Computed<dynamic>(() => super.filteredList,
-              name: '_SearchControllerBase.filteredList'))
+      (_$filteredListComputed ??= Computed<dynamic>(() => super.filteredList))
           .value;
 
   final _$textAtom = Atom(name: '_SearchControllerBase.text');
 
   @override
   String get text {
-    _$textAtom.reportRead();
+    _$textAtom.context.enforceReadPolicy(_$textAtom);
+    _$textAtom.reportObserved();
     return super.text;
   }
 
   @override
   set text(String value) {
-    _$textAtom.reportWrite(value, super.text, () {
+    _$textAtom.context.conditionallyRunInAction(() {
       super.text = value;
-    });
+      _$textAtom.reportChanged();
+    }, _$textAtom, name: '${_$textAtom.name}_set');
   }
 
   final _$propertyTypeAtom = Atom(name: '_SearchControllerBase.propertyType');
 
   @override
   String get propertyType {
-    _$propertyTypeAtom.reportRead();
+    _$propertyTypeAtom.context.enforceReadPolicy(_$propertyTypeAtom);
+    _$propertyTypeAtom.reportObserved();
     return super.propertyType;
   }
 
   @override
   set propertyType(String value) {
-    _$propertyTypeAtom.reportWrite(value, super.propertyType, () {
+    _$propertyTypeAtom.context.conditionallyRunInAction(() {
       super.propertyType = value;
-    });
+      _$propertyTypeAtom.reportChanged();
+    }, _$propertyTypeAtom, name: '${_$propertyTypeAtom.name}_set');
   }
 
   final _$propertyTypesAtom = Atom(name: '_SearchControllerBase.propertyTypes');
 
   @override
-  ObservableList<dynamic> get propertyTypes {
-    _$propertyTypesAtom.reportRead();
+  ObservableList get propertyTypes {
+    _$propertyTypesAtom.context.enforceReadPolicy(_$propertyTypesAtom);
+    _$propertyTypesAtom.reportObserved();
     return super.propertyTypes;
   }
 
   @override
-  set propertyTypes(ObservableList<dynamic> value) {
-    _$propertyTypesAtom.reportWrite(value, super.propertyTypes, () {
+  set propertyTypes(ObservableList value) {
+    _$propertyTypesAtom.context.conditionallyRunInAction(() {
       super.propertyTypes = value;
-    });
+      _$propertyTypesAtom.reportChanged();
+    }, _$propertyTypesAtom, name: '${_$propertyTypesAtom.name}_set');
   }
 
   final _$methodAtom = Atom(name: '_SearchControllerBase.method');
 
   @override
   String get method {
-    _$methodAtom.reportRead();
+    _$methodAtom.context.enforceReadPolicy(_$methodAtom);
+    _$methodAtom.reportObserved();
     return super.method;
   }
 
   @override
   set method(String value) {
-    _$methodAtom.reportWrite(value, super.method, () {
+    _$methodAtom.context.conditionallyRunInAction(() {
       super.method = value;
-    });
+      _$methodAtom.reportChanged();
+    }, _$methodAtom, name: '${_$methodAtom.name}_set');
   }
 
   final _$methodTypesAtom = Atom(name: '_SearchControllerBase.methodTypes');
 
   @override
-  ObservableList<dynamic> get methodTypes {
-    _$methodTypesAtom.reportRead();
+  ObservableList get methodTypes {
+    _$methodTypesAtom.context.enforceReadPolicy(_$methodTypesAtom);
+    _$methodTypesAtom.reportObserved();
     return super.methodTypes;
   }
 
   @override
-  set methodTypes(ObservableList<dynamic> value) {
-    _$methodTypesAtom.reportWrite(value, super.methodTypes, () {
+  set methodTypes(ObservableList value) {
+    _$methodTypesAtom.context.conditionallyRunInAction(() {
       super.methodTypes = value;
-    });
+      _$methodTypesAtom.reportChanged();
+    }, _$methodTypesAtom, name: '${_$methodTypesAtom.name}_set');
   }
 
   final _$propertiesAtom = Atom(name: '_SearchControllerBase.properties');
 
   @override
   ObservableList<Property> get properties {
-    _$propertiesAtom.reportRead();
+    _$propertiesAtom.context.enforceReadPolicy(_$propertiesAtom);
+    _$propertiesAtom.reportObserved();
     return super.properties;
   }
 
   @override
   set properties(ObservableList<Property> value) {
-    _$propertiesAtom.reportWrite(value, super.properties, () {
+    _$propertiesAtom.context.conditionallyRunInAction(() {
       super.properties = value;
-    });
+      _$propertiesAtom.reportChanged();
+    }, _$propertiesAtom, name: '${_$propertiesAtom.name}_set');
   }
 
   final _$_SearchControllerBaseActionController =
       ActionController(name: '_SearchControllerBase');
 
   @override
-  void getProperties(List<Property> l) {
-    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
-        name: '_SearchControllerBase.getProperties');
+  void getProperties(dynamic l) {
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction();
     try {
       return super.getProperties(l);
     } finally {
@@ -123,8 +133,7 @@ mixin _$SearchController on _SearchControllerBase, Store {
 
   @override
   void setText(String newText) {
-    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
-        name: '_SearchControllerBase.setText');
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction();
     try {
       return super.setText(newText);
     } finally {
@@ -134,8 +143,7 @@ mixin _$SearchController on _SearchControllerBase, Store {
 
   @override
   void setpropertyType(String newPropertyType) {
-    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
-        name: '_SearchControllerBase.setpropertyType');
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction();
     try {
       return super.setpropertyType(newPropertyType);
     } finally {
@@ -145,8 +153,7 @@ mixin _$SearchController on _SearchControllerBase, Store {
 
   @override
   void setMethod(String newMethod) {
-    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
-        name: '_SearchControllerBase.setMethod');
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction();
     try {
       return super.setMethod(newMethod);
     } finally {
@@ -156,8 +163,7 @@ mixin _$SearchController on _SearchControllerBase, Store {
 
   @override
   void showData() {
-    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
-        name: '_SearchControllerBase.showData');
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction();
     try {
       return super.showData();
     } finally {
@@ -167,25 +173,11 @@ mixin _$SearchController on _SearchControllerBase, Store {
 
   @override
   void reset() {
-    final _$actionInfo = _$_SearchControllerBaseActionController.startAction(
-        name: '_SearchControllerBase.reset');
+    final _$actionInfo = _$_SearchControllerBaseActionController.startAction();
     try {
       return super.reset();
     } finally {
       _$_SearchControllerBaseActionController.endAction(_$actionInfo);
     }
-  }
-
-  @override
-  String toString() {
-    return '''
-text: ${text},
-propertyType: ${propertyType},
-propertyTypes: ${propertyTypes},
-method: ${method},
-methodTypes: ${methodTypes},
-properties: ${properties},
-filteredList: ${filteredList}
-    ''';
   }
 }

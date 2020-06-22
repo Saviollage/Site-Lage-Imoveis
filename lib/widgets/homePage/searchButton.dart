@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
-import 'package:site_lage/controllers/page_controller.dart';
 import 'package:site_lage/controllers/search_controller.dart';
+import 'package:site_lage/pages/properiesPage.dart';
 
 class SearchButton extends StatelessWidget {
   final searchController = GetIt.I.get<SearchController>();
-  final pageController = GetIt.I.get<CurrentPageController>();
 
   final double size;
   final double percentSize;
@@ -16,7 +15,9 @@ class SearchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () => pageController.changePage(4),
+        onTap: () => 
+                Navigator.of(context)
+                    .pushNamed(PropertiesPage.route),
         child: Container(
           height: size,
          width: MediaQuery.of(context).size.width * percentSize,

@@ -33,7 +33,7 @@ abstract class _EmailControllerBase with Store {
   }
 
   @action
-  Future<bool> submit() async {
+  Future submit() async {
     var response = await http
         .post(Constants.url + "email/sendEmail",
             headers: {
