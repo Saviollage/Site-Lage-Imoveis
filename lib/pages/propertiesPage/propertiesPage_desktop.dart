@@ -52,7 +52,7 @@ class PropertiesPageDesktop extends StatelessWidget {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount:
-                                      MediaQuery.of(context).size.width ~/ 300,
+                                      MediaQuery.of(context).size.width ~/ 400,
                                   childAspectRatio: 400 / 300),
                           itemCount: searchController.filteredList.length,
                           itemBuilder: (context, index) => PropertyCard(
