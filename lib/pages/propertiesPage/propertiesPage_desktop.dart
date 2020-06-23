@@ -30,7 +30,7 @@ class PropertiesPageDesktop extends StatelessWidget {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: MediaQuery.of(context).size.width ~/ 300,
+                      crossAxisCount: MediaQuery.of(context).size.width ~/ 400,
                       childAspectRatio: 400 / 300),
                   itemCount: 10,
                   itemBuilder: (context, index) => SkeletonAnimation(
