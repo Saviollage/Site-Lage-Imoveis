@@ -13,9 +13,9 @@ class Property {
   int qtdBathrooms;
   int qtdGarage;
   bool haveSuit;
-  int frontDimensions;
+  double frontDimensions;
   double sideDimensions;
-  int totalArea;
+  double totalArea;
   int iV;
 
   Property(
