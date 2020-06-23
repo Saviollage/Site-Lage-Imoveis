@@ -1,13 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:site_lage/controllers/api_controller.dart';
+import 'package:site_lage/controllers/search_controller.dart';
 import 'package:site_lage/pages/propertiesPage/propertiesPage_desktop.dart';
 import 'package:site_lage/pages/propertiesPage/propertiesPage_mobile.dart';
 import 'package:site_lage/util/foorter/footer.dart';
 import 'package:site_lage/util/navigationBar/navigationBar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class PropertiesPage extends StatelessWidget {
+class PropertiesPage extends StatefulWidget {
   static const route = '/properties';
+
+  @override
+  PropertiesPageState createState() => PropertiesPageState();
+}
+
+class PropertiesPageState extends State<PropertiesPage> {
+  final apiController = GetIt.I.get<ApiController>();
+  final searchController = GetIt.I.get<SearchController>();
+
+  @override
+  void initState() {
+    if (apiController.properties == null ||
+        apiController.properties.length == 0)
+      apiController.getAllproperties().whenComplete(
+          () => searchController.getProperties(apiController.propertiesList));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,30 +44,38 @@ class PropertiesPage extends StatelessWidget {
             overScroll.disallowGlow();
             return false;
           },
-          child:  SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  NavigationBar(),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(
-                        minHeight: MediaQuery.of(context).size.height * 0.85),
-                    child: Container(
+          child: SingleChildScrollView(
+            physics: ClampingScrollPhysics(),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                NavigationBar(),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height * 0.85),
+                  child: FutureBuilder(
+                    future: apiController.getAllproperties(),
+                    builder: (context, snapshot) => Container(
                       alignment: Alignment.topCenter,
                       child: ScreenTypeLayout(
-                        desktop: PropertiesPageDesktop(),
-                        tablet: PropertiesPageDesktop(),
-                        mobile: PropertiesPageMobile(),
+                        desktop: PropertiesPageDesktop(
+                          snapshot: snapshot,
+                        ),
+                        tablet: PropertiesPageDesktop(
+                          snapshot: snapshot,
+                        ),
+                        mobile: PropertiesPageMobile(
+                          snapshot: snapshot,
+                        ),
                       ),
                     ),
                   ),
-                  Footer()
-                ],
-              ),
+                ),
+                Footer()
+              ],
             ),
-          
+          ),
         ),
       ),
       floatingActionButton: new FloatingActionButton(

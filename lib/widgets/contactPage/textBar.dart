@@ -8,8 +8,10 @@ class TextBar extends StatelessWidget {
   final emailController = GetIt.I.get<EmailController>();
 
   final double percentSize;
+  final String initialText;
 
-  TextBar({Key key, @required this.percentSize}) : super(key: key);
+  TextBar({Key key, @required this.percentSize, this.initialText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class TextBar extends StatelessWidget {
           builder: (_) => TextFormField(
             cursorColor: LageColors.yellow,
             style: TextStyle(fontSize: 16),
+            initialValue: initialText,
             decoration: InputDecoration(
                 border: InputBorder.none,
                 hoverColor: LageColors.yellow,

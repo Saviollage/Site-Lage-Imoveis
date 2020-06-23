@@ -29,6 +29,12 @@ class HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(

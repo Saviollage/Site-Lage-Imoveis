@@ -8,8 +8,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PropertyContact extends StatelessWidget {
   final double percentSize;
+  final String initText;
 
-  const PropertyContact({Key key, @required this.percentSize})
+  const PropertyContact({Key key, @required this.percentSize, this.initText})
       : super(key: key);
 
   @override
@@ -40,9 +41,7 @@ class PropertyContact extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            TextBar(
-              percentSize: percentSize,
-            ),
+            TextBar(percentSize: percentSize, initialText: initText),
             SizedBox(
               height: 10,
             ),

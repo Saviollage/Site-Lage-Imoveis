@@ -89,7 +89,7 @@ abstract class _EmailControllerBase with Store {
 
   @action
   void validateText(String value) {
-    error.text = value == null || value.isEmpty ? "Digite um texto" : null;
+    error.text = value == null ? "Digite um texto" : null;
   }
 
   /*  Verifica a ausencia de erros */

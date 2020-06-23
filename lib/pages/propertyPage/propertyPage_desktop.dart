@@ -7,7 +7,7 @@ import 'package:site_lage/widgets/propertyPage/propertyPhotos.dart';
 
 class PropertyPageDesktop extends StatelessWidget {
   final Property property;
-
+  
   const PropertyPageDesktop({Key key, this.property}) : super(key: key);
 
   @override
@@ -30,7 +30,7 @@ class PropertyPageDesktop extends StatelessWidget {
                     property: property,
                     percentSize: 0.4,
                   ),
-                  PropertyContact(percentSize: 0.4)
+                  PropertyContact(percentSize: 0.4, initText: "Olá, estou interessado(a) em " + property.title + " situado(a) no endereço " + property.address,)
                 ],
               ),
               PropertyPhotos(

@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/controllers/search_controller.dart';
@@ -9,7 +8,6 @@ import 'package:site_lage/pages/properiesPage.dart';
 import 'package:site_lage/widgets/homePage/propertiesList.dart';
 import 'package:site_lage/widgets/homePage/propertiesListLoading.dart';
 import 'package:site_lage/widgets/homePage/searchWidget.dart';
-import 'package:skeleton_text/skeleton_text.dart';
 
 class HomePageDesktop extends StatelessWidget {
   final searchController = GetIt.I.get<SearchController>();

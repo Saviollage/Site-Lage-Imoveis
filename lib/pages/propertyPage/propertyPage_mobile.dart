@@ -38,7 +38,12 @@ class PropertyPageMobile extends StatelessWidget {
                 color: Colors.grey,
                 margin: EdgeInsets.symmetric(vertical: 15),
               ),
-              PropertyContact(percentSize: 1)
+              PropertyContact(
+                  percentSize: 1,
+                  initText: "Olá, estou interessado(a) em " +
+                      property.title +
+                      " situado(a) no endereço " +
+                      property.address)
             ],
           ),
         ));

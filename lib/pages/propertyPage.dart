@@ -26,7 +26,6 @@ class PropertyPageState extends State<PropertyPage> {
   void initState() {
     emailController.reset();
     apiController.resetProperty();
-
     super.initState();
   }
 

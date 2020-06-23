@@ -9,7 +9,7 @@ class ApiController = _ApiControllerBase with _$ApiController;
 
 abstract class _ApiControllerBase with Store {
   @observable
-  ObservableList properties = new ObservableList();
+  ObservableList properties;
 
   @observable
   bool loading = false;
@@ -22,6 +22,7 @@ abstract class _ApiControllerBase with Store {
 
   @action
   Future getAllproperties() async {
+    if (properties != null) return properties;
     try {
       final response = await http
           .get(Constants.url + 'properties')
