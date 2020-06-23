@@ -46,6 +46,7 @@ class HomePageMobile extends StatelessWidget {
               ? PropertiesListLoading(size: 200)
               : PropertiesList(
                   size: 200,
+                  limit: 5,
                   properties: snapshot.data,
                 )),
           Container(

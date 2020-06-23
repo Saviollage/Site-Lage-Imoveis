@@ -38,15 +38,20 @@ class PropertyDetails extends StatelessWidget {
               style: TextStyle(
                   color: LageColors.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 40),
+                  fontSize: 35),
             ),
             subtitle: Text(
               property.description,
               style: TextStyle(
                   color: LageColors.yellow,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20),
+                  fontSize: 15),
             ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            height: 1,
+            color: Colors.grey,
           ),
           PropertyTitle(
             icon: Icons.pin_drop,

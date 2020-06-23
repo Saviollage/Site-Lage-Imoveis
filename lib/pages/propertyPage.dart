@@ -60,20 +60,19 @@ class PropertyPageState extends State<PropertyPage> {
                     builder: (context, snapshot) => snapshot.connectionState ==
                             ConnectionState.waiting
                         ? Container(
-                            color: Colors.white,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CircularProgressIndicator(
-                                  valueColor:
-                                      AlwaysStoppedAnimation(LageColors.yellow),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text('Aguarde, por favor')
-                              ],
-                            ))
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(
+                                valueColor:
+                                    AlwaysStoppedAnimation(LageColors.yellow),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text('Aguarde, por favor')
+                            ],
+                          ))
                         : !snapshot.hasData
                             ? Container(
                                 color: Colors.white,

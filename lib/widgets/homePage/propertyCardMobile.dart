@@ -45,7 +45,7 @@ class PropertyCardMobile extends StatelessWidget {
             ),
             subtitle: Text(
               property.address,
-              style: TextStyle(color: LageColors.yellow, fontSize: 10),
+              style: TextStyle(color: LageColors.yellow, fontSize: 8),
             ),
             trailing: Text(
               property.forSale ? "Venda" : "Aluguel",

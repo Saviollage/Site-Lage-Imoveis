@@ -15,6 +15,7 @@ class TextBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (initialText != null) emailController.setText(initialText);
     return Container(
         height: 140,
         width: MediaQuery.of(context).size.width * percentSize,
@@ -24,7 +25,7 @@ class TextBar extends StatelessWidget {
             color: Colors.grey.withOpacity(0.2),
             // boxShadow: [
             //   BoxShadow(
-            //     blurRadius: 10,
+            //     blurRadius: 10, 
             //     color: Colors.grey,
             //     offset: Offset(5,5)
             //   )

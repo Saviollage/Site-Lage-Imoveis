@@ -46,7 +46,7 @@ class PropertyCard extends StatelessWidget {
                 ),
                 subtitle: Text(
                   property.address,
-                  style: TextStyle(color: LageColors.yellow, fontSize: 20),
+                  style: TextStyle(color: LageColors.yellow, fontSize: 14),
                 ),
                 trailing: Text(
                   property.forSale ? "Venda" : "Aluguel",
