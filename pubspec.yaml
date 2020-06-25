@@ -34,7 +34,7 @@ dependencies:
   google_maps:
   url_launcher:
   skeleton_text:
-  
+  photo_view:
 
 dev_dependencies:
   flutter_test:
