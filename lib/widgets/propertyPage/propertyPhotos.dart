@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/controllers/property_controller.dart';
 
 class PropertyPhotos extends StatelessWidget {
   final propertyController = PropertyController();
+  final controller = SwiperController();
   final List images;
   final double percentSize;
 
@@ -17,17 +20,32 @@ class PropertyPhotos extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Observer(
-            builder: (_) => Container(
+          Container(
               height: 350,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      fit: BoxFit.fitHeight,
-                      image: NetworkImage(
-                          images.elementAt(propertyController.currentIndex)))),
-            ),
-          ),
+                borderRadius: BorderRadius.circular(10),
+                // image: DecorationImage(
+                //   fit: BoxFit.fitHeight,
+                //   image: NetworkImage(
+                //     images.elementAt(propertyController.currentIndex),
+                //   ),
+                // ),
+              ),
+              child: Swiper(
+                pagination: SwiperPagination(),
+                control: SwiperControl(
+                  color: LageColors.yellow,
+                ),
+                controller: controller,
+                itemCount: images.length,
+                itemBuilder: (context, index) => PhotoView(
+                  backgroundDecoration: BoxDecoration(color: Colors.white),
+                  minScale: 0.8,
+                  imageProvider: NetworkImage(
+                    images.elementAt(index),
+                  ),
+                ),
+              )),
           SizedBox(
             height: 40,
           ),
@@ -57,7 +75,7 @@ class PropertyPhotos extends StatelessWidget {
                               fit: BoxFit.fill,
                               image: NetworkImage(images.elementAt(index)))),
                     ),
-                    onTap: () => propertyController.setIndex(index),
+                    onTap: () => controller.move(index, animation: true),
                     focusColor: Colors.transparent,
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,

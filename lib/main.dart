@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:site_lage/components/colors.dart';
 import 'package:site_lage/controllers/api_controller.dart';
 import 'package:site_lage/controllers/email_controller.dart';
 import 'package:site_lage/controllers/search_controller.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+        primaryColor: LageColors.yellow
       ),
       initialRoute: HomePage.route,
       onGenerateRoute: RouteConfiguration.onGenerateRoute,
