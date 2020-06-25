@@ -35,28 +35,27 @@ class PropertyCard extends StatelessWidget {
                 bottomRight: Radius.circular(10),
                 bottomLeft: Radius.circular(10)),
           ),
-          child: Center(
-            child: ListTile(
-                title: Text(
-                  property.title,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(
-                  property.address,
-                  style: TextStyle(color: LageColors.yellow, fontSize: 14),
-                ),
-                trailing: Text(
-                  property.forSale ? "Venda" : "Aluguel",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontStyle: FontStyle.italic),
-                ),
-                onTap: () => Navigator.of(context)
-                    .pushNamed(PropertyPage.route + '/' + property.sId)),
+          child: ListTile(
+            title: Text(
+              property.title,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(
+              property.address,
+              style: TextStyle(color: LageColors.yellow, fontSize: 12),
+            ),
+            trailing: Text(
+              property.forSale ? "Venda" : "Aluguel",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontStyle: FontStyle.italic),
+            ),
+            onTap: () => Navigator.of(context)
+                .pushNamed(PropertyPage.route + '/' + property.sId),
           ),
         ),
       ),
