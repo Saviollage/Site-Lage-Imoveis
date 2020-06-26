@@ -54,9 +54,12 @@ abstract class _EmailControllerBase with Store {
 
   @action
   void reset() {
-    name = "";
-    subject = "";
-    text = "";
+    if (name.isNotEmpty) name = "";
+    if (subject.isNotEmpty) subject = "";
+    if (text.isNotEmpty) text = "";
+    error.name = null;
+    error.subject = null;
+    error.text = null;
   }
 
   List<ReactionDisposer> _disposers;

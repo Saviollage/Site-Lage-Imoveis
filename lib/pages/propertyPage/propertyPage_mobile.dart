@@ -33,7 +33,7 @@ class PropertyPageMobile extends StatelessWidget {
                 percentSize: 1,
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.9,
+                width: MediaQuery.of(context).size.width,
                 height: 1,
                 color: Colors.grey,
                 margin: EdgeInsets.symmetric(vertical: 15),
@@ -43,7 +43,10 @@ class PropertyPageMobile extends StatelessWidget {
                   initText: "Olá, estou interessado(a) em " +
                       property.title +
                       " situado(a) no endereço " +
-                      property.address)
+                      property.address),
+              SizedBox(
+                height: 20,
+              )
             ],
           ),
         ));
