@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:site_lage/components/colors.dart';
@@ -21,7 +20,7 @@ class PropertyPhotos extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Container(
-              height: 350,
+              height: 400,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 // image: DecorationImage(
@@ -32,15 +31,20 @@ class PropertyPhotos extends StatelessWidget {
                 // ),
               ),
               child: Swiper(
-                pagination: SwiperPagination(),
+                pagination: SwiperPagination( builder: DotSwiperPaginationBuilder(
+                  activeColor: LageColors.yellow,
+                  color: Colors.grey.withOpacity(0.3)
+                )),
                 control: SwiperControl(
                   color: LageColors.yellow,
                 ),
                 controller: controller,
                 itemCount: images.length,
                 itemBuilder: (context, index) => PhotoView(
-                  backgroundDecoration: BoxDecoration(color: Colors.white),
-                  minScale: 0.8,
+                  backgroundDecoration:
+                      BoxDecoration(color: Colors.transparent),
+
+                  minScale: 0.6,
                   imageProvider: NetworkImage(
                     images.elementAt(index),
                   ),
