@@ -36,6 +36,7 @@ dependencies:
   skeleton_text:
   photo_view:
   flutter_swiper: 
+  firebase_analytics:
 
 dev_dependencies:
   flutter_test:

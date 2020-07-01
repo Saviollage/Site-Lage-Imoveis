@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:site_lage/controllers/email_controller.dart';
@@ -13,6 +14,8 @@ import 'package:site_lage/util/navigationBar/navigationBarLogo.dart';
 class NavigationBarDesktopAndTablet extends StatelessWidget {
   final searchController = GetIt.I.get<SearchController>();
   final emailController = GetIt.I.get<EmailController>();
+  final observer = GetIt.I.get<FirebaseAnalyticsObserver>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,6 +25,9 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           NavigationBarLogo(onPressed: () {
+            observer.analytics.setCurrentScreen(
+              screenName: HomePage.route,
+            );
             searchController.reset();
             Navigator.of(context).pushNamed(HomePage.route);
           }),
@@ -29,16 +35,22 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               NavigationBarItem(
-                title: "Sobre nós",
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(AboutUsPage.route),
-              ),
+                  title: "Sobre nós",
+                  onPressed: () {
+                    observer.analytics.setCurrentScreen(
+                      screenName: AboutUsPage.route,
+                    );
+                    Navigator.of(context).pushNamed(AboutUsPage.route);
+                  }),
               SizedBox(
                 width: 30,
               ),
               NavigationBarItem(
                 title: "Contato",
                 onPressed: () {
+                  observer.analytics.setCurrentScreen(
+                    screenName: ContactPage.route,
+                  );
                   emailController.reset();
                   Navigator.of(context).pushNamed(ContactPage.route);
                 },
@@ -49,8 +61,12 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
               NavigationBarItem(
                 styled: false,
                 title: "Simuladores",
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(SimulationPage.route),
+                onPressed: () {
+                  observer.analytics.setCurrentScreen(
+                    screenName: SimulationPage.route,
+                  );
+                  Navigator.of(context).pushNamed(SimulationPage.route);
+                },
               ),
               SizedBox(
                 width: 30,
@@ -58,6 +74,9 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
               NavigationBarItem(
                 title: "Todos os Imóveis",
                 onPressed: () {
+                  observer.analytics.setCurrentScreen(
+                    screenName: PropertiesPage.route,
+                  );
                   searchController.reset();
                   Navigator.of(context).pushNamed(PropertiesPage.route);
                 },

@@ -1,3 +1,5 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,18 +19,24 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final FirebaseAnalytics analytics = FirebaseAnalytics();
   @override
   Widget build(BuildContext context) {
+    FirebaseAnalyticsObserver observer =
+        FirebaseAnalyticsObserver(analytics: analytics);
+    GetIt.I.registerSingleton(observer);
     return MaterialApp(
       title: 'Lage Imóveis',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-        primaryColor: LageColors.yellow
-      ),
+          textTheme:
+              GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+          primaryColor: LageColors.yellow),
       initialRoute: HomePage.route,
       onGenerateRoute: RouteConfiguration.onGenerateRoute,
+      navigatorObservers: [
+        observer,
+      ],
     );
   }
 }

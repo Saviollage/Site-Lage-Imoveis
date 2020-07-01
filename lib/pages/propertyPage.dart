@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -13,26 +14,25 @@ import 'package:site_lage/widgets/propertiesPage/notFoundWidget.dart';
 class PropertyPage extends StatefulWidget {
   static const route = '/property';
   final String id;
+  PropertyPage({Key key, this.id}) : super(key: key);
 
-  const PropertyPage({Key key, this.id}) : super(key: key);
+  @override
   PropertyPageState createState() => PropertyPageState();
 }
 
 class PropertyPageState extends State<PropertyPage> {
   final apiController = GetIt.I.get<ApiController>();
   final emailController = GetIt.I.get<EmailController>();
+  final observer = GetIt.I.get<FirebaseAnalyticsObserver>();
 
   @override
   void initState() {
+    observer.analytics.setCurrentScreen(
+      screenName: '/property/' + widget.id,
+    );
     emailController.reset();
     apiController.resetProperty();
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    apiController.resetProperty();
-    super.dispose();
   }
 
   @override

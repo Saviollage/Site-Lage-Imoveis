@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
-    <meta name="description" content="Imóveis em ipatinga, imobiliaria ipatinga, venda, locação de imoveis residenciais, comerciais e rurais, minas gerais, vale do aço, imobiliaria em ipatinga mg, imobiliarias no brasil, imobiliária em minas gerais, administração de imóveis - Lage Imóveis CRECI 1915" />
+    <meta
+      name="description"
+      content="Imóveis em ipatinga, imobiliaria ipatinga, venda, locação de imoveis residenciais, comerciais e rurais, minas gerais, vale do aço, imobiliaria em ipatinga mg, imobiliarias no brasil, imobiliária em minas gerais, administração de imóveis - Lage Imóveis CRECI 1915"
+    />
     <meta
       name="keywords"
       content="imovel, imoveis, apartamentos, casa, lotes, lage, imobiliárias, imobiliaria, coberturas, casas, loteamentos, aluguel, vendas, empreendimentos, imovel na planta,montagem, ipatinga, coronel fabriciano, timoteo, minas gerais, vale do aço, industria, mercado, empresas, grupo, investimento"
@@ -57,9 +60,29 @@
     </style>
   </head>
   <body id="app-container">
-    <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyApkXPiK5eBEb1xizWvlx3WGMP5KtIFmHY",
+        authDomain: "lage-imoveis.firebaseapp.com",
+        databaseURL: "https://lage-imoveis.firebaseio.com",
+        projectId: "lage-imoveis",
+        storageBucket: "lage-imoveis.appspot.com",
+        messagingSenderId: "704507798133",
+        appId: "1:704507798133:web:eb0d3a71b88dc90f368e3c",
+        measurementId: "G-PHC9ZT1ZGP",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
 
     <div>
       <img src="assets/assets/logo/Lage.png" class="pulse" />
