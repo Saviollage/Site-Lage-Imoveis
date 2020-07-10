@@ -14,9 +14,9 @@ Disponível
 ## 📸 Imagens do sistema
 
 <p align="center">
-  <img src="screens/1.jpg" width="350">
-  <img src="screens/2.jpg" width="350">
-  <img src="screens/3.jpg" width="350">
+  <img src="screens/1.jpg" width="400">
+  <img src="screens/2.jpg" width="400">
+  <img src="screens/3.jpg" width="400">
 </p>
 <br>
 <p align="center">
