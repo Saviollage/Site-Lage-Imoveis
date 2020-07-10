@@ -15,14 +15,15 @@ Disponível
 
 <div style="text-align: center"><table><tr>
   <td style="text-align: center">
-    <img src="screens/1.jpg" width="300"/>
+    <img src="screens/1.jpg" width="600"/>
 </td>
   <td style="text-align: center">
-    <img src="screens/2.jpg" width="300"/>
+    <img src="screens/2.jpg" width="600"/>
 </td>
   <td style="text-align: center">
-    <img src="screens/3.jpg" width="300"/>
+    <img src="screens/3.jpg" width="600"/>
 </td>
+<br>
 <td style="text-align: center">
     <img src="screens/4.jpeg" width="100"/>
 </td>
