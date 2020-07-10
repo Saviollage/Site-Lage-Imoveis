@@ -51,7 +51,6 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
                   observer.analytics.setCurrentScreen(
                     screenName: ContactPage.route,
                   );
-                  emailController.reset();
                   Navigator.of(context).pushNamed(ContactPage.route);
                 },
               ),

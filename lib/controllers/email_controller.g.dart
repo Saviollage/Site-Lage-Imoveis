@@ -107,16 +107,6 @@ mixin _$EmailController on _EmailControllerBase, Store {
   }
 
   @override
-  void reset() {
-    final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
-    try {
-      return super.reset();
-    } finally {
-      _$_EmailControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void validateName(String value) {
     final _$actionInfo = _$_EmailControllerBaseActionController.startAction();
     try {

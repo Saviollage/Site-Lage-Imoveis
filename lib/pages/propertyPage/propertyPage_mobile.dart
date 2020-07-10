@@ -6,7 +6,6 @@ import 'package:site_lage/widgets/propertyPage/propertyPhotos.dart';
 
 class PropertyPageMobile extends StatelessWidget {
   final Property property;
-
   const PropertyPageMobile({Key key, this.property}) : super(key: key);
 
   @override
@@ -45,7 +44,7 @@ class PropertyPageMobile extends StatelessWidget {
                       " situado(a) no endereço " +
                       property.address),
               SizedBox(
-                height: 20,
+                height: 50,
               )
             ],
           ),

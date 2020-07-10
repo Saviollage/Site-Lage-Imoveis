@@ -52,16 +52,6 @@ abstract class _EmailControllerBase with Store {
       return false;
   }
 
-  @action
-  void reset() {
-    if (name.isNotEmpty) name = "";
-    if (subject.isNotEmpty) subject = "";
-    if (text.isNotEmpty) text = "";
-    error.name = null;
-    error.subject = null;
-    error.text = null;
-  }
-
   List<ReactionDisposer> _disposers;
 
   void setupValidations() {

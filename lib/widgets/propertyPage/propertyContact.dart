@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:site_lage/components/colors.dart';
-import 'package:site_lage/widgets/contactPage/nameBar.dart';
-import 'package:site_lage/widgets/contactPage/subjectBar.dart';
-import 'package:site_lage/widgets/contactPage/submitButton.dart';
-import 'package:site_lage/widgets/contactPage/textBar.dart';
+import 'package:site_lage/controllers/email_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PropertyContact extends StatelessWidget {
   final double percentSize;
   final String initText;
+  final emailController = EmailController();
 
-  const PropertyContact({Key key, @required this.percentSize, this.initText})
+  PropertyContact({Key key, @required this.percentSize, this.initText})
       : super(key: key);
 
   @override
@@ -29,24 +28,148 @@ class PropertyContact extends StatelessWidget {
                     fontSize: 20),
               ),
             ),
-            NameBar(
-              percentSize: percentSize,
+            Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width * percentSize,
+              padding: EdgeInsets.only(left: 10),
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Observer(
+                builder: (_) => TextFormField(
+                  cursorColor: LageColors.yellow,
+                  style: TextStyle(fontSize: 16),
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hoverColor: LageColors.yellow,
+                      fillColor: LageColors.yellow,
+                      hintText: 'Digite seu email',
+                      hintStyle: TextStyle(fontSize: 16),
+                      errorText: emailController.error.name),
+                  onChanged: emailController.setName,
+                ),
+              ),
             ),
             SizedBox(
               height: 10,
             ),
-            SubjectBar(
-              percentSize: percentSize,
-            ),
+            Container(
+                height: 70,
+                width: MediaQuery.of(context).size.width * percentSize,
+                padding: EdgeInsets.only(left: 10),
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Observer(
+                  builder: (_) => TextFormField(
+                    cursorColor: LageColors.yellow,
+                    style: TextStyle(fontSize: 16),
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hoverColor: LageColors.yellow,
+                        fillColor: LageColors.yellow,
+                        hintText: 'Assunto',
+                        hintStyle: TextStyle(fontSize: 16),
+                        errorText: emailController.error.subject),
+                    maxLines: 2,
+                    maxLength: 50,
+                    onChanged: emailController.setSubject,
+                  ),
+                )),
             SizedBox(
               height: 10,
             ),
-            TextBar(percentSize: percentSize, initialText: initText),
+            Container(
+                height: 140,
+                width: MediaQuery.of(context).size.width * percentSize,
+                padding: EdgeInsets.only(left: 10),
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                    color: Colors.grey.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Observer(
+                  builder: (_) => TextFormField(
+                    cursorColor: LageColors.yellow,
+                    style: TextStyle(fontSize: 16),
+                    initialValue: initText,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hoverColor: LageColors.yellow,
+                        fillColor: LageColors.yellow,
+                        hintText: 'Texto',
+                        hintStyle: TextStyle(fontSize: 16),
+                        errorText: emailController.error.text),
+                    maxLines: 4,
+                    maxLengthEnforced: true,
+                    maxLength: 200,
+                    onChanged: emailController.setText,
+                  ),
+                )),
             SizedBox(
               height: 10,
             ),
-            SubmitButton(
-              percentSize: percentSize,
+            InkWell(
+              child: Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width * percentSize,
+                padding: EdgeInsets.only(left: 10),
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                    color: LageColors.yellow,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Center(
+                  child: Text(
+                    "ENVIAR",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
+                ),
+              ),
+              onTap: () => emailController.validateAll().then((value) {
+                if (value) {
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      content: ListTile(
+                        leading: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation(LageColors.yellow),
+                        ),
+                        title: Text("Aguarde"),
+                        subtitle: Text('Enviando email'),
+                      ),
+                    ),
+                  );
+                  emailController.submit().then((value) {
+                    Navigator.pop(context);
+                    showDialog(
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (_) {
+                          Future.delayed(Duration(seconds: 3), () {
+                            Navigator.pop(context);
+                          });
+
+                          return AlertDialog(
+                            content: ListTile(
+                                leading: Icon(
+                                  value ? Icons.check_circle : Icons.cancel,
+                                  color: LageColors.yellow,
+                                  size: 40,
+                                ),
+                                title: value ? Text("Sucesso!") : Text("Ops!"),
+                                subtitle: value
+                                    ? Text('Email enviado com sucesso!')
+                                    : Text("ocorreu um erro, tente novamente")),
+                          );
+                        });
+                  });
+                }
+              }),
             ),
             SizedBox(
               height: 10,

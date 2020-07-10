@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:site_lage/components/colors.dart';
-import 'package:site_lage/controllers/email_controller.dart';
 import 'package:site_lage/pages/propertyPage/propertyPage_desktop.dart';
 import 'package:site_lage/pages/propertyPage/propertyPage_mobile.dart';
 import 'package:site_lage/util/foorter/footer.dart';
@@ -17,22 +16,30 @@ class PropertyPage extends StatefulWidget {
   PropertyPage({Key key, this.id}) : super(key: key);
 
   @override
-  PropertyPageState createState() => PropertyPageState();
+  PropertyPageState createState() => PropertyPageState(id);
 }
 
 class PropertyPageState extends State<PropertyPage> {
   final apiController = GetIt.I.get<ApiController>();
-  final emailController = GetIt.I.get<EmailController>();
   final observer = GetIt.I.get<FirebaseAnalyticsObserver>();
+  final String id;
+
+  PropertyPageState(this.id);
 
   @override
   void initState() {
     observer.analytics.setCurrentScreen(
-      screenName: '/property/' + widget.id,
+      screenName: '/property/' + id,
     );
-    emailController.reset();
-    apiController.resetProperty();
+
+    apiController.getpropertyDetail(id);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    apiController.resetProperty();
+    super.dispose();
   }
 
   @override
@@ -84,13 +91,13 @@ class PropertyPageState extends State<PropertyPage> {
                                 alignment: Alignment.topCenter,
                                 child: ScreenTypeLayout(
                                   desktop: PropertyPageDesktop(
-                                    property: apiController.property,
+                                    property: snapshot.data,
                                   ),
                                   tablet: PropertyPageDesktop(
-                                    property: apiController.property,
+                                    property: snapshot.data,
                                   ),
                                   mobile: PropertyPageMobile(
-                                    property: apiController.property,
+                                    property: snapshot.data,
                                   ),
                                 ),
                               ),

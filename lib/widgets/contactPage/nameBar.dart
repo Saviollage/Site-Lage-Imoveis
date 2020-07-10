@@ -20,28 +20,19 @@ class NameBar extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.2),
-          // boxShadow: [
-          //   BoxShadow(
-          //     blurRadius: 10,
-          //     color: Colors.grey,
-          //     offset: Offset(5,5)
-          //   )
-          // ],
           borderRadius: BorderRadius.circular(10)),
       child: Observer(
         builder: (_) => TextFormField(
           cursorColor: LageColors.yellow,
           style: TextStyle(fontSize: 16),
           decoration: InputDecoration(
-            border: InputBorder.none,
-            hoverColor: LageColors.yellow,
-            fillColor: LageColors.yellow,
-            hintText: 'Digite seu email',
-            hintStyle: TextStyle(fontSize: 16),
-            errorText: emailController.error.name
-          ),
+              border: InputBorder.none,
+              hoverColor: LageColors.yellow,
+              fillColor: LageColors.yellow,
+              hintText: 'Digite seu email',
+              hintStyle: TextStyle(fontSize: 16),
+              errorText: emailController.error.name),
           onChanged: emailController.setName,
-          
         ),
       ),
     );

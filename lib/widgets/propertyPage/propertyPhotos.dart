@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:site_lage/components/colors.dart';
-import 'package:site_lage/controllers/property_controller.dart';
 
 class PropertyPhotos extends StatelessWidget {
-  final propertyController = PropertyController();
   final controller = SwiperController();
   final List images;
   final double percentSize;
@@ -31,10 +29,11 @@ class PropertyPhotos extends StatelessWidget {
                 // ),
               ),
               child: Swiper(
-                pagination: SwiperPagination( builder: DotSwiperPaginationBuilder(
-                  activeColor: LageColors.yellow,
-                  color: Colors.grey.withOpacity(0.3)
-                )),
+                pagination: SwiperPagination(
+                    builder: DotSwiperPaginationBuilder(
+                        size: 5,
+                        activeColor: LageColors.yellow,
+                        color: Colors.grey.withOpacity(0.3))),
                 control: SwiperControl(
                   color: LageColors.yellow,
                 ),
@@ -43,7 +42,6 @@ class PropertyPhotos extends StatelessWidget {
                 itemBuilder: (context, index) => PhotoView(
                   backgroundDecoration:
                       BoxDecoration(color: Colors.transparent),
-
                   minScale: 0.6,
                   imageProvider: NetworkImage(
                     images.elementAt(index),

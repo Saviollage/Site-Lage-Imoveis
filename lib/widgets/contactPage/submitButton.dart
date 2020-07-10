@@ -19,15 +19,7 @@ class SubmitButton extends StatelessWidget {
         padding: EdgeInsets.only(left: 10),
         margin: EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-            color: LageColors.yellow,
-            // boxShadow: [
-            //   BoxShadow(
-            //     blurRadius: 10,
-            //     color: Colors.grey,
-            //     offset: Offset(5,5)
-            //   )
-            // ],
-            borderRadius: BorderRadius.circular(10)),
+            color: LageColors.yellow, borderRadius: BorderRadius.circular(10)),
         child: Center(
           child: Text(
             "ENVIAR",

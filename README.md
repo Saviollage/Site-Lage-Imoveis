@@ -1,16 +1,41 @@
-# site_lage
+# 💡 Site LAGE IMÓVEIS
 
-A new Flutter project.
+Site desenvolvido para a imobiliária Lage Imóveis. 
+Disponível 
+[neste link](https://lageimoveis.com.br)
 
-## Getting Started
+## 📲 Tecnologias utilizadas 🖥
 
-This project is a starting point for a Flutter application.
+### Flutter Web
+- Arquitetura MVC
+- MOBX
+- Responsive Layout Builder
 
-A few resources to get you started if this is your first Flutter project:
+## 📸 Imagens do sistema
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<div style="text-align: center"><table><tr>
+  <td style="text-align: center">
+    <img src="screens/1.jpg" width="300"/>
+</td>
+  <td style="text-align: center">
+    <img src="screens/2.jpg" width="300"/>
+</td>
+  <td style="text-align: center">
+    <img src="screens/3.jpg" width="300"/>
+</td>
+<td style="text-align: center">
+    <img src="screens/4.jpeg" width="100"/>
+</td>
+<td style="text-align: center">
+    <img src="screens/5.jpeg" width="100"/>
+</td>
+</tr></table></div>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 👩‍💻 Para executar
+
+```bash
+flutter run -d chrome
+```
+
+## Licença
+[MIT](https://choosealicense.com/licenses/mit/)

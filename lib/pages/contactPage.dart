@@ -13,7 +13,6 @@ class ContactPage extends StatelessWidget {
   final emailController = GetIt.I.get<EmailController>();
   @override
   Widget build(BuildContext context) {
-    emailController.reset();
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
