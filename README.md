@@ -17,9 +17,10 @@ Disponível
   <img src="screens/1.jpg" width="400">
   <img src="screens/2.jpg" width="400">
   <img src="screens/3.jpg" width="400">
-  <img src="screens/4.jpeg" heigth="300">
-  <img src="screens/5.jpeg" heigth="300">
+  <img src="screens/4.jpeg" width="200">
+  <img src="screens/5.jpeg" width="200">
 </p>
+
 
 ## 👩‍💻 Para executar
 
