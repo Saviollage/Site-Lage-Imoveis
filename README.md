@@ -13,24 +13,16 @@ Disponível
 
 ## 📸 Imagens do sistema
 
-<div style="text-align: center"><table><tr>
-  <td style="text-align: center">
-    <img src="screens/1.jpg" width="600"/>
-</td>
-  <td style="text-align: center">
-    <img src="screens/2.jpg" width="600"/>
-</td>
-  <td style="text-align: center">
-    <img src="screens/3.jpg" width="600"/>
-</td>
+<p align="center">
+  <img src="screens/1.jpg" width="350">
+  <img src="screens/2.jpg" width="350">
+  <img src="screens/3.jpg" width="350">
+</p>
 <br>
-<td style="text-align: center">
-    <img src="screens/4.jpeg" width="100"/>
-</td>
-<td style="text-align: center">
-    <img src="screens/5.jpeg" width="100"/>
-</td>
-</tr></table></div>
+<p align="center">
+  <img src="screens/4.jpeg" width="350">
+  <img src="screens/5.jpeg" width="350">
+</p>
 
 ## 👩‍💻 Para executar
 
