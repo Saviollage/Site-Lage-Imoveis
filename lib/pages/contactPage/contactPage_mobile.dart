@@ -7,7 +7,6 @@ class ContactPageMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -23,10 +22,7 @@ class ContactPageMobile extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Container(
-              height: 300,
-              child: MapWidget(size: 0.9)
-            ),
+            Container(height: 300, child: MapWidget(size: 0.9)),
             SizedBox(
               height: 50,
             ),

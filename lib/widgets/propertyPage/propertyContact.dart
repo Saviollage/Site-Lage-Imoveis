@@ -194,8 +194,9 @@ class PropertyContact extends StatelessWidget {
                   ),
                 ),
               ),
-              onTap: () =>
-                  launch("https://api.whatsapp.com/send?phone=553138222535"),
+              onTap: () => launch(
+                  "https://api.whatsapp.com/send?phone=553138222535&text=" +
+                      initText),
             ),
             SizedBox(
               height: 30,
