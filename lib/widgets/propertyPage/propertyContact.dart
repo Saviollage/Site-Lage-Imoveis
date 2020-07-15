@@ -14,6 +14,7 @@ class PropertyContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    emailController.setText(initText);
     return Container(
         width: MediaQuery.of(context).size.width * percentSize,
         child: Column(
@@ -182,13 +183,6 @@ class PropertyContact extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                     color: const Color(0xff25D366),
-                    // boxShadow: [
-                    //   BoxShadow(
-                    //     blurRadius: 10,
-                    //     color: Colors.grey,
-                    //     offset: Offset(5,5)
-                    //   )
-                    // ],
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(
                   child: Text(

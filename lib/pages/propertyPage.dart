@@ -37,12 +37,6 @@ class PropertyPageState extends State<PropertyPage> {
   }
 
   @override
-  void dispose() {
-    apiController.resetProperty();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -56,7 +50,6 @@ class PropertyPageState extends State<PropertyPage> {
             physics: ClampingScrollPhysics(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 NavigationBar(),
                 ConstrainedBox(
