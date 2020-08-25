@@ -113,7 +113,7 @@ class PropertyDetails extends StatelessWidget {
             title: property.forSale ? "Venda" : "Locação",
             subtitle: "Transação",
           ),
-          property.price != null
+          property.price != null && property.price != 0
               ? PropertyTitle(
                   icon: Icons.monetization_on,
                   title: "R\$" + getPrice(),
