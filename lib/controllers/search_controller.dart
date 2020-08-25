@@ -14,6 +14,7 @@ abstract class _SearchControllerBase with Store {
   @observable
   ObservableList propertyTypes = [
     "Todos",
+    "Área",
     "Apartamento",
     "Casa",
     "Casa Geminada",
@@ -75,6 +76,21 @@ abstract class _SearchControllerBase with Store {
     method = "Aluguel e Venda";
   }
 
+  String normalize(String currentString) {
+    String possible = "áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ";
+    String result = "aaaaeeiooouuncAAAAEEIOOOUUNC";
+
+    String newValue = "";
+    for (int i = 0; i < currentString.length; i++) {
+      if (possible.contains(currentString[i])) {
+        newValue += result[possible.indexOf(currentString[i])];
+      } else {
+        newValue += currentString[i];
+      }
+    }
+    return newValue;
+  }
+
   @computed
   get filteredList {
     if (text.isEmpty) {
@@ -98,29 +114,40 @@ abstract class _SearchControllerBase with Store {
     } else {
       if (propertyType == "Todos") {
         if (method == "Aluguel e Venda")
-          return properties.where((element) =>
-              element.address.toLowerCase().contains(text.toLowerCase()));
+          return properties.where((element) => normalize(element.address)
+              .toLowerCase()
+              .contains(text.toLowerCase()));
         else if (method == "Aluguel")
           return properties.where((element) =>
-              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              normalize(element.address)
+                  .toLowerCase()
+                  .contains(text.toLowerCase()) &&
               element.forRent);
         else
           return properties.where((element) =>
-              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              normalize(element.address)
+                  .toLowerCase()
+                  .contains(text.toLowerCase()) &&
               element.forSale);
       } else {
         if (method == "Aluguel e Venda")
           return properties.where((element) =>
-              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              normalize(element.address)
+                  .toLowerCase()
+                  .contains(text.toLowerCase()) &&
               element.type == propertyType);
         else if (method == "Aluguel")
           return properties.where((element) =>
-              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              normalize(element.address)
+                  .toLowerCase()
+                  .contains(text.toLowerCase()) &&
               element.type == propertyType &&
               element.forRent);
         else
           return properties.where((element) =>
-              element.address.toLowerCase().contains(text.toLowerCase()) &&
+              normalize(element.address)
+                  .toLowerCase()
+                  .contains(text.toLowerCase()) &&
               element.type == propertyType &&
               element.forSale);
       }

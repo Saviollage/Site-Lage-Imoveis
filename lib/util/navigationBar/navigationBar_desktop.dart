@@ -19,7 +19,7 @@ class NavigationBarDesktopAndTablet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 70),
       height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -19,7 +19,7 @@ class NavigationBarMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
       height: 100,
       child: Row(
         mainAxisSize: MainAxisSize.max,

@@ -8,12 +8,15 @@ class NavigationBarLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
-      child:
-          InkWell(onTap: onPressed, child: Image.asset('assets/logo/Lage.png'), focusColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,),
+      height: 100,
+      child: InkWell(
+        onTap: onPressed,
+        child: Image.asset('assets/logo/Lage.png'),
+        focusColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
+      ),
     );
   }
 }

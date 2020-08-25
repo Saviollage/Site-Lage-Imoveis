@@ -113,18 +113,17 @@ class PropertyDetails extends StatelessWidget {
             title: property.forSale ? "Venda" : "Locação",
             subtitle: "Transação",
           ),
-          PropertyTitle(
-            icon: Icons.monetization_on,
-            title: "R\$" + getPrice(),
-            subtitle: "Preço",
-          ),
+          property.price != null
+              ? PropertyTitle(
+                  icon: Icons.monetization_on,
+                  title: "R\$" + getPrice(),
+                  subtitle: "Preço",
+                )
+              : Container(),
           Container(
             height: 1,
             color: Colors.grey,
           ),
-          
-
-          
         ],
       ),
     );
